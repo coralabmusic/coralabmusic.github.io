@@ -83,7 +83,9 @@
   .rail .tot{font-size:15px;font-weight:700;color:var(--faint);}
   .slides-col{flex:1;min-width:0;}
   .slide{min-height:92vh;display:flex;flex-direction:column;justify-content:center;padding:60px 56px 60px 0;border-bottom:1px solid var(--line);}
-  .slide .idx-mobile{color:var(--gold);font-weight:800;font-size:14px;margin-bottom:18px;display:block;}
+  .idx-dots{display:flex;align-items:center;gap:7px;margin-bottom:22px;}
+  .idx-dots .dot{width:6px;height:6px;border-radius:3px;background:var(--line);transition:all .35s cubic-bezier(.4,0,.2,1);}
+  .idx-dots .dot.active{width:22px;background:var(--gold);}
   .slide h2{font-size:clamp(30px,4vw,54px);line-height:1.06;margin-bottom:20px;max-width:560px;}
   .slide p{color:var(--muted);font-size:16.5px;max-width:460px;margin-bottom:28px;}
   .img-col{width:46%;flex:none;position:relative;display:none;}
@@ -112,7 +114,7 @@
   .qn-col{position:relative;display:block;overflow:hidden;padding:64px 40px 48px;min-height:560px;background:var(--card);border-right:1px solid var(--line);transition:background-color .4s ease-in-out;}
   .qn-col:last-child{border-right:none;}
   .qn-decor{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%) rotate(-90deg);width:640px;text-align:center;font-size:96px;font-weight:800;letter-spacing:.02em;color:transparent;-webkit-text-stroke:1.5px rgba(28,27,24,.35);opacity:0;transition:opacity .5s ease-in-out;pointer-events:none;white-space:nowrap;}
-  .qn-num{position:relative;z-index:2;display:block;font-size:14px;font-weight:700;color:var(--gold);margin-bottom:28px;transition:color .35s ease-in-out;}
+  .qn-rule{position:relative;z-index:2;display:block;width:34px;height:2px;background:var(--gold);margin-bottom:28px;transition:background-color .35s ease-in-out;}
   .qn-title{position:relative;z-index:2;font-size:clamp(22px,2.3vw,30px);font-weight:800;color:var(--gold);margin-bottom:18px;transition:color .35s ease-in-out;}
   .qn-text{position:relative;z-index:2;color:#fff;font-size:15px;line-height:1.55;max-width:320px;margin-bottom:26px;opacity:0;transition:opacity .4s ease-in-out,color .35s ease-in-out;}
   .qn-list{position:relative;z-index:2;margin-bottom:44px;}
@@ -121,9 +123,9 @@
   .qn-link svg{width:20px;height:9px;transition:transform .3s ease;}
   .qn-col:hover{background:var(--gold);}
   .qn-col:hover .qn-decor{opacity:1;}
-  .qn-col:hover .qn-num,
   .qn-col:hover .qn-title,
   .qn-col:hover .qn-link{color:var(--ink);}
+  .qn-col:hover .qn-rule{background:var(--ink);}
   .qn-col:hover .qn-text{opacity:1;color:rgba(28,27,24,.82);}
   .qn-col:hover .qn-list li{color:var(--ink);}
   .qn-col:hover .qn-link svg{transform:translateX(4px);}
@@ -133,7 +135,7 @@
     .qn-decor{display:none;}
     .qn-text{opacity:1;color:var(--muted);}
     .qn-col:hover .qn-text{color:rgba(28,27,24,.82);}
-    .qn-num{margin-bottom:22px;}
+    .qn-rule{margin-bottom:22px;}
   }
 
   /* ---------- ABOUT ---------- */
@@ -432,14 +434,18 @@
 <!-- SPLIT SCROLL INTRO -->
 <div class="split-wrap" id="hero">
   <div class="rail">
-    <div class="cur" id="railCur">01</div>
     <div class="line" id="railLine"></div>
-    <div class="tot">05</div>
   </div>
 
   <div class="slides-col">
     <div class="slide" data-idx="01">
-      <span class="idx-mobile">01 / 05</span>
+      <span class="idx-dots" aria-label="Страница 1 из 5">
+        <span class="dot active"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+      </span>
       <div class="simg hero-mobile-photo" data-img="01" data-fallback="img/photos/hero-01.jpg" data-aspect="0.6667">
         <div class="simg-photo" style="background-image:url('img/photos/hero-01.jpg')"></div>
         <span class="hero-photo-tag">Фото 01 / 05 <span class="status">· фото коллектива</span></span>
@@ -454,7 +460,13 @@
     </div>
 
     <div class="slide" data-idx="02">
-      <span class="idx-mobile">02 / 05</span>
+      <span class="idx-dots" aria-label="Страница 2 из 5">
+        <span class="dot"></span>
+        <span class="dot active"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+      </span>
       <div class="simg hero-mobile-photo" data-img="02" data-fallback="img/photos/hero-02.jpg" data-aspect="1.5">
         <div class="simg-photo" style="background-image:url('img/photos/hero-02.jpg')"></div>
         <span class="hero-photo-tag">Фото 02 / 05 <span class="status">· фото коллектива</span></span>
@@ -469,7 +481,13 @@
     </div>
 
     <div class="slide" data-idx="03">
-      <span class="idx-mobile">03 / 05</span>
+      <span class="idx-dots" aria-label="Страница 3 из 5">
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot active"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+      </span>
       <div class="simg hero-mobile-photo" data-img="03" data-fallback="img/photos/hero-03.jpg" data-aspect="1.5">
         <div class="simg-photo" style="background-image:url('img/photos/hero-03.jpg')"></div>
         <span class="hero-photo-tag">Фото 03 / 05 <span class="status">· фото коллектива</span></span>
@@ -484,7 +502,13 @@
     </div>
 
     <div class="slide" data-idx="04">
-      <span class="idx-mobile">04 / 05</span>
+      <span class="idx-dots" aria-label="Страница 4 из 5">
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot active"></span>
+        <span class="dot"></span>
+      </span>
       <div class="simg hero-mobile-photo" data-img="04" data-fallback="img/photos/hero-04.jpg" data-aspect="1.5">
         <div class="simg-photo" style="background-image:url('img/photos/hero-04.jpg')"></div>
         <span class="hero-photo-tag">Фото 04 / 05 <span class="status">· фото коллектива</span></span>
@@ -499,7 +523,13 @@
     </div>
 
     <div class="slide" data-idx="05">
-      <span class="idx-mobile">05 / 05</span>
+      <span class="idx-dots" aria-label="Страница 5 из 5">
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot active"></span>
+      </span>
       <div class="simg hero-mobile-photo" data-img="05" data-fallback="https://images.unsplash.com/photo-1690182183994-85c53baa6d10?w=1200&amp;q=70&amp;auto=format&amp;fit=crop">
         <div class="simg-photo" style="background-image:url('https://images.unsplash.com/photo-1690182183994-85c53baa6d10?w=1200&amp;q=70&amp;auto=format&amp;fit=crop')"></div>
         <span class="hero-photo-tag">Фото 05 / 05 <span class="status">· заглушка</span></span>
@@ -568,14 +598,18 @@
 
   <div class="split-wrap member-split reveal">
     <div class="rail">
-      <div class="cur" id="memberRailCur">01</div>
       <div class="line" id="memberRailLine"></div>
-      <div class="tot">05</div>
     </div>
 
     <div class="slides-col member-slides-col">
       <div class="slide member-slide" data-midx="01">
-        <span class="idx-mobile">01 / 05</span>
+        <span class="idx-dots" aria-label="Страница 1 из 5">
+        <span class="dot active"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+      </span>
         <div class="chip-row">
           <div class="chip-wrap" data-key="member-01" data-aspect="0.6656">
             <div class="member-thumb"><div class="ph" data-fallback="img/photos/member-01.jpg" style="background-image:url('img/photos/member-01.jpg')"></div></div>
@@ -594,7 +628,13 @@
       </div>
 
       <div class="slide member-slide" data-midx="02">
-        <span class="idx-mobile">02 / 05</span>
+        <span class="idx-dots" aria-label="Страница 2 из 5">
+        <span class="dot"></span>
+        <span class="dot active"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+      </span>
         <div class="chip-row">
           <div class="chip-wrap" data-key="member-02" data-aspect="0.6669">
             <div class="member-thumb"><div class="ph" data-fallback="img/photos/member-02.jpg" style="background-image:url('img/photos/member-02.jpg')"></div></div>
@@ -613,7 +653,13 @@
       </div>
 
       <div class="slide member-slide" data-midx="03">
-        <span class="idx-mobile">03 / 05</span>
+        <span class="idx-dots" aria-label="Страница 3 из 5">
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot active"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+      </span>
         <div class="chip-row">
           <div class="chip-wrap" data-key="member-03" data-aspect="0.6663">
             <div class="member-thumb"><div class="ph" data-fallback="img/photos/member-03.jpg" style="background-image:url('img/photos/member-03.jpg')"></div></div>
@@ -632,7 +678,13 @@
       </div>
 
       <div class="slide member-slide" data-midx="04">
-        <span class="idx-mobile">04 / 05</span>
+        <span class="idx-dots" aria-label="Страница 4 из 5">
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot active"></span>
+        <span class="dot"></span>
+      </span>
         <div class="chip-row">
           <div class="chip-wrap" data-key="member-04" data-aspect="0.6669">
             <div class="member-thumb"><div class="ph" data-fallback="img/photos/member-04.jpg" style="background-image:url('img/photos/member-04.jpg')"></div></div>
@@ -651,7 +703,13 @@
       </div>
 
       <div class="slide member-slide" data-midx="05">
-        <span class="idx-mobile">05 / 05</span>
+        <span class="idx-dots" aria-label="Страница 5 из 5">
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot active"></span>
+      </span>
         <div class="chip-row">
           <div class="chip-wrap" data-key="member-05" data-aspect="0.6656">
             <div class="member-thumb"><div class="ph" data-fallback="img/photos/member-05.jpg" style="background-image:url('img/photos/member-05.jpg')"></div></div>
@@ -768,7 +826,7 @@
   <div class="qn-grid">
     <a href="#program" class="qn-col">
       <div class="qn-decor" aria-hidden="true">REPERTOIRE</div>
-      <span class="qn-num">01</span>
+      <span class="qn-rule" aria-hidden="true"></span>
       <h3 class="qn-title">Репертуар</h3>
       <p class="qn-text">Более 200 произведений в девяти разделах — от новогодней классики до джаза и поп-хитов, список постоянно пополняется.</p>
       <ul class="qn-list">
@@ -787,7 +845,7 @@
 
     <a href="#events" class="qn-col">
       <div class="qn-decor" aria-hidden="true">EVENTS</div>
-      <span class="qn-num">02</span>
+      <span class="qn-rule" aria-hidden="true"></span>
       <h3 class="qn-title">Форматы мероприятий</h3>
       <p class="qn-text">Подберём состав, хронометраж и программу под ваш формат — от камерной церемонии до масштабного фестиваля.</p>
       <ul class="qn-list">
@@ -803,7 +861,7 @@
 
     <a href="#media" class="qn-col">
       <div class="qn-decor" aria-hidden="true">MEDIA</div>
-      <span class="qn-num">03</span>
+      <span class="qn-rule" aria-hidden="true"></span>
       <h3 class="qn-title">Медиа</h3>
       <p class="qn-text">Фото и видео с выступлений — реальные кадры с ваших мероприятий и концертов появятся здесь.</p>
       <ul class="qn-list">
@@ -1264,17 +1322,15 @@
     });
   });
 
-  // split-scroll sync: rail number + progress line + right-panel image swap
+  // split-scroll sync: progress line + right-panel image swap
   var slides = Array.prototype.slice.call(document.querySelectorAll('#hero .slide'));
   var simgs = Array.prototype.slice.call(document.querySelectorAll('.simg'));
-  var railCur = document.getElementById('railCur');
   var railLine = document.getElementById('railLine');
   var total = slides.length;
   var slideIO = new IntersectionObserver(function(entries){
     entries.forEach(function(entry){
       if (entry.isIntersecting){
         var idx = entry.target.getAttribute('data-idx');
-        railCur.textContent = idx;
         railLine.style.setProperty('--prog', (parseInt(idx,10)/total*100) + '%');
         simgs.forEach(function(s){ s.classList.toggle('active', s.getAttribute('data-img') === idx); });
       }
@@ -1282,10 +1338,9 @@
   }, { threshold: 0.55 });
   slides.forEach(function(s){ slideIO.observe(s); });
 
-  // members split-scroll sync: rail number + progress line + sticky portrait swap ("fold" transition via CSS)
+  // members split-scroll sync: progress line + sticky portrait swap ("fold" transition via CSS)
   var memberSlides = Array.prototype.slice.call(document.querySelectorAll('.member-slide'));
   var msimgs = Array.prototype.slice.call(document.querySelectorAll('.msimg'));
-  var memberRailCur = document.getElementById('memberRailCur');
   var memberRailLine = document.getElementById('memberRailLine');
   var memberBigTitle = document.getElementById('memberBigTitle');
   var memberBigRole = document.getElementById('memberBigRole');
@@ -1295,7 +1350,6 @@
       entries.forEach(function(entry){
         if (entry.isIntersecting){
           var idx = entry.target.getAttribute('data-midx');
-          memberRailCur.textContent = idx;
           memberRailLine.style.setProperty('--prog', (parseInt(idx,10)/memberTotal*100) + '%');
           msimgs.forEach(function(s){
             var isActive = s.getAttribute('data-msimg') === idx;
