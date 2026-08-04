@@ -10,7 +10,9 @@
 <link rel="apple-touch-icon" sizes="180x180" href="img/favicon-180.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700;0,9..144,800;1,9..144,600;1,9..144,700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://api.fontshare.com">
+<link href="https://api.fontshare.com/v2/css?f[]=monument-extended@400,500,600,700,800,900&display=swap" rel="stylesheet">
 <style>
   :root{
     --bg:#242320;
@@ -50,7 +52,7 @@
   .brand-mark{width:60px;height:60px;display:flex;align-items:center;justify-content:center;flex:none;}
   .brand-mark img{width:100%;height:100%;object-fit:contain;display:block;}
   .brand-text{line-height:1.2;}
-  .brand-name{font-family:'Fraunces',Georgia,serif;font-optical-sizing:auto;font-style:italic;font-weight:700;letter-spacing:-.01em;color:var(--gold);}
+  .brand-name{font-family:'Monument Extended',Archivo,sans-serif;font-weight:900;letter-spacing:-.01em;color:var(--gold);}
   .brand-text b{display:block;font-size:19px;letter-spacing:.02em;}
   .brand-text b.brand-name{color:var(--text);}
   .brand-text span{display:block;font-size:10.5px;color:var(--faint);text-transform:uppercase;letter-spacing:.06em;}
@@ -222,6 +224,7 @@
   /* ---- pan/zoom adjustment for uploaded photos ("сузить, расширить, двигать") ---- */
   .adjust-toggle-btn{position:absolute;width:30px;height:30px;border-radius:50%;background:rgba(20,20,18,.55);border:1px solid rgba(255,255,255,.35);display:none;align-items:center;justify-content:center;color:#fff;cursor:pointer;z-index:3;transition:background .25s ease,border-color .25s ease,color .25s ease;}
   .has-custom .adjust-toggle-btn{display:flex;}
+  body.owner-mode .adjust-toggle-btn{display:flex;}
   .adjust-toggle-btn:hover,.adjust-toggle-btn.active{background:var(--gold);border-color:var(--gold);color:var(--ink);}
   .adjust-toggle-btn svg{width:14px;height:14px;pointer-events:none;}
   .simg .adjust-toggle-btn{top:20px;right:96px;}
