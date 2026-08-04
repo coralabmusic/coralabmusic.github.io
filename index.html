@@ -10,7 +10,7 @@
 <link rel="apple-touch-icon" sizes="180x180" href="img/favicon-180.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&display=swap" rel="stylesheet">
 <style>
   :root{
     --bg:#242320;
@@ -50,7 +50,9 @@
   .brand-mark{width:60px;height:60px;display:flex;align-items:center;justify-content:center;flex:none;}
   .brand-mark img{width:100%;height:100%;object-fit:contain;display:block;}
   .brand-text{line-height:1.2;}
-  .brand-text b{display:block;font-size:16px;font-weight:800;letter-spacing:.01em;}
+  .brand-name{font-family:'Playfair Display',Georgia,serif;font-style:italic;font-weight:700;color:var(--gold);}
+  .brand-text b{display:block;font-size:19px;letter-spacing:.02em;}
+  .brand-text b.brand-name{color:var(--text);}
   .brand-text span{display:block;font-size:10.5px;color:var(--faint);text-transform:uppercase;letter-spacing:.06em;}
   .nav-links{display:flex;gap:26px;}
   .nav-links a{font-size:13px;color:var(--muted);transition:color .2s ease;}
@@ -390,7 +392,7 @@
   <div class="nav">
     <a href="#hero" class="brand">
       <span class="brand-mark"><img src="img/logo-mark.png" alt="CoraLab" width="60" height="60" loading="eager"></span>
-      <span class="brand-text"><b>CoraLab</b></span>
+      <span class="brand-text"><b class="brand-name">CoraLab</b></span>
     </a>
     <nav class="nav-links">
       <a href="#about">О бэнде</a>
@@ -436,7 +438,7 @@
   <div class="slides-col">
     <div class="slide" data-idx="01">
       <span class="idx-mobile">01 / 05</span>
-      <div class="simg hero-mobile-photo" data-img="01" data-fallback="img/photos/hero-01.jpg">
+      <div class="simg hero-mobile-photo" data-img="01" data-fallback="img/photos/hero-01.jpg" data-aspect="0.6667">
         <div class="simg-photo" style="background-image:url('img/photos/hero-01.jpg')"></div>
         <span class="hero-photo-tag">Фото 01 / 05 <span class="status">· фото коллектива</span></span>
         <label class="media-upload-btn" title="Загрузить своё фото"><input type="file" accept="image/*" class="media-input" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 16V4M12 4l-4 4M12 4l4 4"/><path d="M4 15v3a1 1 0 001 1h14a1 1 0 001-1v-3"/></svg></label>
@@ -444,14 +446,14 @@
         <button type="button" class="adjust-toggle-btn" title="Настроить положение и масштаб фото"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="5 9 2 12 5 15"/><polyline points="9 5 12 2 15 5"/><polyline points="15 19 12 22 9 19"/><polyline points="19 9 22 12 19 15"/><line x1="2" y1="12" x2="22" y2="12"/><line x1="12" y1="2" x2="12" y2="22"/></svg></button>
         <div class="adjust-toolbar"><button type="button" class="adjust-zoom-out" title="Уменьшить">−</button><button type="button" class="adjust-zoom-in" title="Увеличить">+</button><button type="button" class="adjust-done-btn" title="Готово">Готово</button></div>
       </div>
-      <h2>CoraLab — бэнд для вашего события</h2>
+      <h2><span class="brand-name">CoraLab</span> — бэнд для вашего события</h2>
       <p>Классика, кино, джаз и поп-хиты в живом исполнении. Мы не просто играем музыку — мы создаём атмосферу вашего события.</p>
       <a href="#contact" class="link-arrow">Забронировать выступление <svg viewBox="0 0 20 9" fill="none"><path stroke="currentColor" stroke-width="1.5" d="M0 4.5h18M13 0l5 4.5-5 4.5"/></svg></a>
     </div>
 
     <div class="slide" data-idx="02">
       <span class="idx-mobile">02 / 05</span>
-      <div class="simg hero-mobile-photo" data-img="02" data-fallback="img/photos/hero-02.jpg">
+      <div class="simg hero-mobile-photo" data-img="02" data-fallback="img/photos/hero-02.jpg" data-aspect="1.5">
         <div class="simg-photo" style="background-image:url('img/photos/hero-02.jpg')"></div>
         <span class="hero-photo-tag">Фото 02 / 05 <span class="status">· фото коллектива</span></span>
         <label class="media-upload-btn" title="Загрузить своё фото"><input type="file" accept="image/*" class="media-input" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 16V4M12 4l-4 4M12 4l4 4"/><path d="M4 15v3a1 1 0 001 1h14a1 1 0 001-1v-3"/></svg></label>
@@ -466,7 +468,7 @@
 
     <div class="slide" data-idx="03">
       <span class="idx-mobile">03 / 05</span>
-      <div class="simg hero-mobile-photo" data-img="03" data-fallback="img/photos/hero-03.jpg">
+      <div class="simg hero-mobile-photo" data-img="03" data-fallback="img/photos/hero-03.jpg" data-aspect="1.5">
         <div class="simg-photo" style="background-image:url('img/photos/hero-03.jpg')"></div>
         <span class="hero-photo-tag">Фото 03 / 05 <span class="status">· фото коллектива</span></span>
         <label class="media-upload-btn" title="Загрузить своё фото"><input type="file" accept="image/*" class="media-input" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 16V4M12 4l-4 4M12 4l4 4"/><path d="M4 15v3a1 1 0 001 1h14a1 1 0 001-1v-3"/></svg></label>
@@ -481,7 +483,7 @@
 
     <div class="slide" data-idx="04">
       <span class="idx-mobile">04 / 05</span>
-      <div class="simg hero-mobile-photo" data-img="04" data-fallback="img/photos/hero-04.jpg">
+      <div class="simg hero-mobile-photo" data-img="04" data-fallback="img/photos/hero-04.jpg" data-aspect="1.5">
         <div class="simg-photo" style="background-image:url('img/photos/hero-04.jpg')"></div>
         <span class="hero-photo-tag">Фото 04 / 05 <span class="status">· фото коллектива</span></span>
         <label class="media-upload-btn" title="Загрузить своё фото"><input type="file" accept="image/*" class="media-input" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 16V4M12 4l-4 4M12 4l4 4"/><path d="M4 15v3a1 1 0 001 1h14a1 1 0 001-1v-3"/></svg></label>
@@ -512,7 +514,7 @@
 
   <div class="img-col">
     <div class="img-stack">
-      <div class="simg active" data-img="01" data-fallback="img/photos/hero-01.jpg">
+      <div class="simg active" data-img="01" data-fallback="img/photos/hero-01.jpg" data-aspect="0.6667">
         <div class="simg-photo" style="background-image:url('img/photos/hero-01.jpg')"></div>
         <span class="hero-photo-tag">Фото 01 / 05 <span class="status">· фото коллектива</span></span>
         <label class="media-upload-btn" title="Загрузить своё фото"><input type="file" accept="image/*" class="media-input" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 16V4M12 4l-4 4M12 4l4 4"/><path d="M4 15v3a1 1 0 001 1h14a1 1 0 001-1v-3"/></svg></label>
@@ -520,7 +522,7 @@
         <button type="button" class="adjust-toggle-btn" title="Настроить положение и масштаб фото"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="5 9 2 12 5 15"/><polyline points="9 5 12 2 15 5"/><polyline points="15 19 12 22 9 19"/><polyline points="19 9 22 12 19 15"/><line x1="2" y1="12" x2="22" y2="12"/><line x1="12" y1="2" x2="12" y2="22"/></svg></button>
         <div class="adjust-toolbar"><button type="button" class="adjust-zoom-out" title="Уменьшить">−</button><button type="button" class="adjust-zoom-in" title="Увеличить">+</button><button type="button" class="adjust-done-btn" title="Готово">Готово</button></div>
       </div>
-      <div class="simg" data-img="02" data-fallback="img/photos/hero-02.jpg">
+      <div class="simg" data-img="02" data-fallback="img/photos/hero-02.jpg" data-aspect="1.5">
         <div class="simg-photo" style="background-image:url('img/photos/hero-02.jpg')"></div>
         <span class="hero-photo-tag">Фото 02 / 05 <span class="status">· фото коллектива</span></span>
         <label class="media-upload-btn" title="Загрузить своё фото"><input type="file" accept="image/*" class="media-input" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 16V4M12 4l-4 4M12 4l4 4"/><path d="M4 15v3a1 1 0 001 1h14a1 1 0 001-1v-3"/></svg></label>
@@ -528,7 +530,7 @@
         <button type="button" class="adjust-toggle-btn" title="Настроить положение и масштаб фото"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="5 9 2 12 5 15"/><polyline points="9 5 12 2 15 5"/><polyline points="15 19 12 22 9 19"/><polyline points="19 9 22 12 19 15"/><line x1="2" y1="12" x2="22" y2="12"/><line x1="12" y1="2" x2="12" y2="22"/></svg></button>
         <div class="adjust-toolbar"><button type="button" class="adjust-zoom-out" title="Уменьшить">−</button><button type="button" class="adjust-zoom-in" title="Увеличить">+</button><button type="button" class="adjust-done-btn" title="Готово">Готово</button></div>
       </div>
-      <div class="simg" data-img="03" data-fallback="img/photos/hero-03.jpg">
+      <div class="simg" data-img="03" data-fallback="img/photos/hero-03.jpg" data-aspect="1.5">
         <div class="simg-photo" style="background-image:url('img/photos/hero-03.jpg')"></div>
         <span class="hero-photo-tag">Фото 03 / 05 <span class="status">· фото коллектива</span></span>
         <label class="media-upload-btn" title="Загрузить своё фото"><input type="file" accept="image/*" class="media-input" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 16V4M12 4l-4 4M12 4l4 4"/><path d="M4 15v3a1 1 0 001 1h14a1 1 0 001-1v-3"/></svg></label>
@@ -536,7 +538,7 @@
         <button type="button" class="adjust-toggle-btn" title="Настроить положение и масштаб фото"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="5 9 2 12 5 15"/><polyline points="9 5 12 2 15 5"/><polyline points="15 19 12 22 9 19"/><polyline points="19 9 22 12 19 15"/><line x1="2" y1="12" x2="22" y2="12"/><line x1="12" y1="2" x2="12" y2="22"/></svg></button>
         <div class="adjust-toolbar"><button type="button" class="adjust-zoom-out" title="Уменьшить">−</button><button type="button" class="adjust-zoom-in" title="Увеличить">+</button><button type="button" class="adjust-done-btn" title="Готово">Готово</button></div>
       </div>
-      <div class="simg" data-img="04" data-fallback="img/photos/hero-04.jpg">
+      <div class="simg" data-img="04" data-fallback="img/photos/hero-04.jpg" data-aspect="1.5">
         <div class="simg-photo" style="background-image:url('img/photos/hero-04.jpg')"></div>
         <span class="hero-photo-tag">Фото 04 / 05 <span class="status">· фото коллектива</span></span>
         <label class="media-upload-btn" title="Загрузить своё фото"><input type="file" accept="image/*" class="media-input" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 16V4M12 4l-4 4M12 4l4 4"/><path d="M4 15v3a1 1 0 001 1h14a1 1 0 001-1v-3"/></svg></label>
@@ -555,6 +557,66 @@
     </div>
   </div>
 </div>
+
+<!-- MEDIA -->
+<section id="media">
+  <div class="wrap">
+    <div class="section-head reveal"><span class="eyebrow">Медиа</span><h2>Фото и видео бэнда</h2><p>Здесь появятся фотографии и видео с ваших мероприятий и концертов. Пока — места под них, готовые принять первые кадры.</p></div>
+    <div class="media-grid reveal">
+      <div class="media-tile" data-slot="01" data-kind="photo" data-aspect="1.5">
+        <div class="media-photo" data-fallback="img/photos/media-01.jpg" style="background-image:url('img/photos/media-01.jpg')"></div>
+        <div class="media-scrim"></div>
+        <span class="tag">Фото — 01 <span class="status">· фото коллектива</span></span><span class="lbl">Групповое фото коллектива</span>
+        <label class="media-upload-btn" title="Загрузить своё фото"><input type="file" accept="image/*" class="media-input" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 16V4M12 4l-4 4M12 4l4 4"/><path d="M4 15v3a1 1 0 001 1h14a1 1 0 001-1v-3"/></svg></label>
+        <button type="button" class="media-reset-btn" title="Вернуть заглушку">✕</button>
+        <button type="button" class="adjust-toggle-btn" title="Настроить положение и масштаб фото"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="5 9 2 12 5 15"/><polyline points="9 5 12 2 15 5"/><polyline points="15 19 12 22 9 19"/><polyline points="19 9 22 12 19 15"/><line x1="2" y1="12" x2="22" y2="12"/><line x1="12" y1="2" x2="12" y2="22"/></svg></button>
+        <div class="adjust-toolbar"><button type="button" class="adjust-zoom-out" title="Уменьшить">−</button><button type="button" class="adjust-zoom-in" title="Увеличить">+</button><button type="button" class="adjust-done-btn" title="Готово">Готово</button></div>
+      </div>
+      <div class="media-tile" data-slot="02" data-kind="video">
+        <div class="media-photo" data-fallback="https://images.unsplash.com/photo-1539074450440-232be6e93e2a?w=900&amp;q=70&amp;auto=format&amp;fit=crop" style="background-image:url('https://images.unsplash.com/photo-1539074450440-232be6e93e2a?w=900&amp;q=70&amp;auto=format&amp;fit=crop')"></div>
+        <div class="media-scrim"></div>
+        <span class="tag">Видео — 02 <span class="status">· заглушка</span></span><div class="play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div><span class="lbl">Видео выступления</span>
+        <label class="media-upload-btn" title="Загрузить своё видео"><input type="file" accept="video/*" class="media-input" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 16V4M12 4l-4 4M12 4l4 4"/><path d="M4 15v3a1 1 0 001 1h14a1 1 0 001-1v-3"/></svg></label>
+        <button type="button" class="media-reset-btn" title="Вернуть заглушку">✕</button>
+      </div>
+      <div class="media-tile" data-slot="03" data-kind="photo" data-aspect="0.6657">
+        <div class="media-photo" data-fallback="img/photos/media-03.jpg" style="background-image:url('img/photos/media-03.jpg')"></div>
+        <div class="media-scrim"></div>
+        <span class="tag">Фото — 03 <span class="status">· фото коллектива</span></span><span class="lbl">Выступление на сцене</span>
+        <label class="media-upload-btn" title="Загрузить своё фото"><input type="file" accept="image/*" class="media-input" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 16V4M12 4l-4 4M12 4l4 4"/><path d="M4 15v3a1 1 0 001 1h14a1 1 0 001-1v-3"/></svg></label>
+        <button type="button" class="media-reset-btn" title="Вернуть заглушку">✕</button>
+        <button type="button" class="adjust-toggle-btn" title="Настроить положение и масштаб фото"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="5 9 2 12 5 15"/><polyline points="9 5 12 2 15 5"/><polyline points="15 19 12 22 9 19"/><polyline points="19 9 22 12 19 15"/><line x1="2" y1="12" x2="22" y2="12"/><line x1="12" y1="2" x2="12" y2="22"/></svg></button>
+        <div class="adjust-toolbar"><button type="button" class="adjust-zoom-out" title="Уменьшить">−</button><button type="button" class="adjust-zoom-in" title="Увеличить">+</button><button type="button" class="adjust-done-btn" title="Готово">Готово</button></div>
+      </div>
+      <div class="media-tile" data-slot="04" data-kind="photo" data-aspect="1.4989">
+        <div class="media-photo" data-fallback="img/photos/media-04.jpg" style="background-image:url('img/photos/media-04.jpg')"></div>
+        <div class="media-scrim"></div>
+        <span class="tag">Фото — 04 <span class="status">· фото коллектива</span></span><span class="lbl">Фото со свадьбы</span>
+        <label class="media-upload-btn" title="Загрузить своё фото"><input type="file" accept="image/*" class="media-input" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 16V4M12 4l-4 4M12 4l4 4"/><path d="M4 15v3a1 1 0 001 1h14a1 1 0 001-1v-3"/></svg></label>
+        <button type="button" class="media-reset-btn" title="Вернуть заглушку">✕</button>
+        <button type="button" class="adjust-toggle-btn" title="Настроить положение и масштаб фото"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="5 9 2 12 5 15"/><polyline points="9 5 12 2 15 5"/><polyline points="15 19 12 22 9 19"/><polyline points="19 9 22 12 19 15"/><line x1="2" y1="12" x2="22" y2="12"/><line x1="12" y1="2" x2="12" y2="22"/></svg></button>
+        <div class="adjust-toolbar"><button type="button" class="adjust-zoom-out" title="Уменьшить">−</button><button type="button" class="adjust-zoom-in" title="Увеличить">+</button><button type="button" class="adjust-done-btn" title="Готово">Готово</button></div>
+      </div>
+      <div class="media-tile" data-slot="05" data-kind="video">
+        <div class="media-photo" data-fallback="https://images.unsplash.com/photo-1690182183994-85c53baa6d10?w=900&amp;q=70&amp;auto=format&amp;fit=crop" style="background-image:url('https://images.unsplash.com/photo-1690182183994-85c53baa6d10?w=900&amp;q=70&amp;auto=format&amp;fit=crop')"></div>
+        <div class="media-scrim"></div>
+        <span class="tag">Видео — 05 <span class="status">· заглушка</span></span><div class="play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div><span class="lbl">Видео со свадьбы</span>
+        <label class="media-upload-btn" title="Загрузить своё видео"><input type="file" accept="video/*" class="media-input" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 16V4M12 4l-4 4M12 4l4 4"/><path d="M4 15v3a1 1 0 001 1h14a1 1 0 001-1v-3"/></svg></label>
+        <button type="button" class="media-reset-btn" title="Вернуть заглушку">✕</button>
+      </div>
+      <div class="media-tile" data-slot="06" data-kind="photo" data-aspect="1.5005">
+        <div class="media-photo" data-fallback="img/photos/media-06.jpg" style="background-image:url('img/photos/media-06.jpg')"></div>
+        <div class="media-scrim"></div>
+        <span class="tag">Фото — 06 <span class="status">· фото коллектива</span></span><span class="lbl">Крупный план: инструменты</span>
+        <label class="media-upload-btn" title="Загрузить своё фото"><input type="file" accept="image/*" class="media-input" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 16V4M12 4l-4 4M12 4l4 4"/><path d="M4 15v3a1 1 0 001 1h14a1 1 0 001-1v-3"/></svg></label>
+        <button type="button" class="media-reset-btn" title="Вернуть заглушку">✕</button>
+        <button type="button" class="adjust-toggle-btn" title="Настроить положение и масштаб фото"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="5 9 2 12 5 15"/><polyline points="9 5 12 2 15 5"/><polyline points="15 19 12 22 9 19"/><polyline points="19 9 22 12 19 15"/><line x1="2" y1="12" x2="22" y2="12"/><line x1="12" y1="2" x2="12" y2="22"/></svg></button>
+        <div class="adjust-toolbar"><button type="button" class="adjust-zoom-out" title="Уменьшить">−</button><button type="button" class="adjust-zoom-in" title="Увеличить">+</button><button type="button" class="adjust-done-btn" title="Готово">Готово</button></div>
+      </div>
+    </div>
+    <p class="media-hint">Нажмите на значок ⬆ в углу любой плитки, чтобы загрузить своё фото или видео с этого устройства — оно тут же появится на сайте и сохранится в этом браузере. Значок ✕ возвращает временную заглушку. У загруженных фото появляется значок ⊹ — им можно перетащить фото и приблизить/отдалить кнопками, чтобы точно вписать нужный кадр в рамку.</p>
+  </div>
+</section>
 
 <!-- QUICK NAV: repertoire / event formats / media, boroda.com-style hover columns -->
 <section class="qn-section">
@@ -616,7 +678,7 @@
     <div class="section-head reveal"><span class="eyebrow">О коллективе</span><h2>Музыка, которая создаёт атмосферу</h2></div>
     <div class="about-grid">
       <div class="reveal">
-        <p><b>CoraLab</b> — музыкальный бэнд, собранный музыкантом Тимофеем Убогих из артистов, разделяющих одну идею: классическая инструментальная музыка звучит современно и живо в любом пространстве.</p>
+        <p><b class="brand-name" style="color:var(--text);">CoraLab</b> — музыкальный бэнд, собранный музыкантом Тимофеем Убогих из артистов, разделяющих одну идею: классическая инструментальная музыка звучит современно и живо в любом пространстве.</p>
         <p>Все участники коллектива — <b>лауреаты международных конкурсов</b>. Мы играем в разных стилях — от барокко и романтизма до кино-саундтреков, джаза и современных хитов.</p>
         <p>Мы не только исполняем музыку, но и выстраиваем настроение мероприятия: подбираем программу под формат события — свадьбу, вечеринку, презентацию, день рождения, конференцию или фестиваль.</p>
       </div>
@@ -641,20 +703,6 @@
   </div>
 </section>
 
-<!-- WHY US -->
-<section id="why">
-  <div class="wrap">
-    <div class="section-head reveal"><span class="eyebrow">Почему мы</span><h2>Почему выбирают нас</h2></div>
-    <div class="reveal">
-      <div class="event-row"><span class="e-idx">01</span><h3>Стильные и современные</h3><p>Мы не только играем музыку, но и создаём атмосферу. Наш образ всегда соответствует событию — от строгой классики до модного стиля.</p></div>
-      <div class="event-row"><span class="e-idx">02</span><h3>Быстрая подготовка</h3><p>Быстро адаптируем программу под сроки и формат вашего мероприятия — готовы даже к внезапным изменениям.</p></div>
-      <div class="event-row"><span class="e-idx">03</span><h3>Индивидуальный подход</h3><p>Подберём репертуар под ваш формат: свадьба, вечеринка, фестиваль, корпоратив — любое событие станет особенным.</p></div>
-      <div class="event-row"><span class="e-idx">04</span><h3>Всегда на связи</h3><p>Прозрачная коммуникация, ответственность и внимание к деталям — мы ценим ваше время и доверие.</p></div>
-      <div class="event-row"><span class="e-idx">05</span><h3>Широкий репертуар</h3><p>От классики до современных поп-хитов — мы играем то, что трогает сердце, и всегда готовы к экспериментам.</p></div>
-    </div>
-  </div>
-</section>
-
 <!-- MEMBERS -->
 <section id="members" style="background:var(--bg-alt);">
   <div class="wrap">
@@ -672,7 +720,7 @@
       <div class="slide member-slide" data-midx="01">
         <span class="idx-mobile">01 / 05</span>
         <div class="chip-row">
-          <div class="chip-wrap" data-key="member-01">
+          <div class="chip-wrap" data-key="member-01" data-aspect="0.6656">
             <div class="member-thumb"><div class="ph" data-fallback="img/photos/member-01.jpg" style="background-image:url('img/photos/member-01.jpg')"></div></div>
             <label class="media-upload-btn" title="Загрузить своё фото"><input type="file" accept="image/*" class="media-input" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 16V4M12 4l-4 4M12 4l4 4"/><path d="M4 15v3a1 1 0 001 1h14a1 1 0 001-1v-3"/></svg></label>
             <button type="button" class="media-reset-btn" title="Вернуть заглушку">✕</button>
@@ -691,7 +739,7 @@
       <div class="slide member-slide" data-midx="02">
         <span class="idx-mobile">02 / 05</span>
         <div class="chip-row">
-          <div class="chip-wrap" data-key="member-02">
+          <div class="chip-wrap" data-key="member-02" data-aspect="0.6669">
             <div class="member-thumb"><div class="ph" data-fallback="img/photos/member-02.jpg" style="background-image:url('img/photos/member-02.jpg')"></div></div>
             <label class="media-upload-btn" title="Загрузить своё фото"><input type="file" accept="image/*" class="media-input" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 16V4M12 4l-4 4M12 4l4 4"/><path d="M4 15v3a1 1 0 001 1h14a1 1 0 001-1v-3"/></svg></label>
             <button type="button" class="media-reset-btn" title="Вернуть заглушку">✕</button>
@@ -710,7 +758,7 @@
       <div class="slide member-slide" data-midx="03">
         <span class="idx-mobile">03 / 05</span>
         <div class="chip-row">
-          <div class="chip-wrap" data-key="member-03">
+          <div class="chip-wrap" data-key="member-03" data-aspect="0.6663">
             <div class="member-thumb"><div class="ph" data-fallback="img/photos/member-03.jpg" style="background-image:url('img/photos/member-03.jpg')"></div></div>
             <label class="media-upload-btn" title="Загрузить своё фото"><input type="file" accept="image/*" class="media-input" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 16V4M12 4l-4 4M12 4l4 4"/><path d="M4 15v3a1 1 0 001 1h14a1 1 0 001-1v-3"/></svg></label>
             <button type="button" class="media-reset-btn" title="Вернуть заглушку">✕</button>
@@ -729,7 +777,7 @@
       <div class="slide member-slide" data-midx="04">
         <span class="idx-mobile">04 / 05</span>
         <div class="chip-row">
-          <div class="chip-wrap" data-key="member-04">
+          <div class="chip-wrap" data-key="member-04" data-aspect="0.6669">
             <div class="member-thumb"><div class="ph" data-fallback="img/photos/member-04.jpg" style="background-image:url('img/photos/member-04.jpg')"></div></div>
             <label class="media-upload-btn" title="Загрузить своё фото"><input type="file" accept="image/*" class="media-input" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 16V4M12 4l-4 4M12 4l4 4"/><path d="M4 15v3a1 1 0 001 1h14a1 1 0 001-1v-3"/></svg></label>
             <button type="button" class="media-reset-btn" title="Вернуть заглушку">✕</button>
@@ -748,13 +796,13 @@
       <div class="slide member-slide" data-midx="05">
         <span class="idx-mobile">05 / 05</span>
         <div class="chip-row">
-          <div class="chip-wrap" data-key="member-05">
-            <div class="member-thumb"><div class="ph" data-fallback="https://images.unsplash.com/photo-1614892506463-9da94e9bc18c?w=300&amp;q=70&amp;auto=format&amp;fit=crop" style="background-image:url('https://images.unsplash.com/photo-1614892506463-9da94e9bc18c?w=300&amp;q=70&amp;auto=format&amp;fit=crop')"></div></div>
+          <div class="chip-wrap" data-key="member-05" data-aspect="0.6656">
+            <div class="member-thumb"><div class="ph" data-fallback="img/photos/member-05.jpg" style="background-image:url('img/photos/member-05.jpg')"></div></div>
             <label class="media-upload-btn" title="Загрузить своё фото"><input type="file" accept="image/*" class="media-input" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 16V4M12 4l-4 4M12 4l4 4"/><path d="M4 15v3a1 1 0 001 1h14a1 1 0 001-1v-3"/></svg></label>
             <button type="button" class="media-reset-btn" title="Вернуть заглушку">✕</button>
             <button type="button" class="adjust-toggle-btn" title="Настроить положение и масштаб фото"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="5 9 2 12 5 15"/><polyline points="9 5 12 2 15 5"/><polyline points="15 19 12 22 9 19"/><polyline points="19 9 22 12 19 15"/><line x1="2" y1="12" x2="22" y2="12"/><line x1="12" y1="2" x2="12" y2="22"/></svg></button>
             <div class="adjust-toolbar"><button type="button" class="adjust-zoom-out" title="Уменьшить">−</button><button type="button" class="adjust-zoom-in" title="Увеличить">+</button><button type="button" class="adjust-done-btn" title="Готово">Готово</button></div>
-            <span class="chip-status">заглушка</span>
+            <span class="chip-status">фото коллектива</span>
           </div>
           <div class="member-slide-name">
             <h3>Татьяна Мартынович</h3>
@@ -787,7 +835,7 @@
           <label class="msvid-upload-btn" title="Добавить видео вместо фото"><input type="file" accept="video/*" class="msvid-input" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="6" width="14" height="12" rx="2"/><path d="M16.5 10.2 21 7.5v9l-4.5-2.7"/></svg></label>
           <button type="button" class="msvid-reset-btn" title="Убрать видео, вернуть фото">✕</button>
         </div>
-        <div class="msimg" data-msimg="05" data-fallback="https://images.unsplash.com/photo-1614892506463-9da94e9bc18c?w=1200&amp;q=70&amp;auto=format&amp;fit=crop" style="background-image:url('https://images.unsplash.com/photo-1614892506463-9da94e9bc18c?w=1200&amp;q=70&amp;auto=format&amp;fit=crop')">
+        <div class="msimg" data-msimg="05" data-fallback="img/photos/member-05.jpg" style="background-image:url('img/photos/member-05.jpg')">
           <video class="msvid" muted loop playsinline></video>
           <label class="msvid-upload-btn" title="Добавить видео вместо фото"><input type="file" accept="video/*" class="msvid-input" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="6" width="14" height="12" rx="2"/><path d="M16.5 10.2 21 7.5v9l-4.5-2.7"/></svg></label>
           <button type="button" class="msvid-reset-btn" title="Убрать видео, вернуть фото">✕</button>
@@ -798,66 +846,19 @@
   </div>
 </section>
 
-<!-- MEDIA -->
-<section id="media">
+<!-- WHY US -->
+<section id="why">
   <div class="wrap">
-    <div class="section-head reveal"><span class="eyebrow">Медиа</span><h2>Фото и видео бэнда</h2><p>Здесь появятся фотографии и видео с ваших мероприятий и концертов. Пока — места под них, готовые принять первые кадры.</p></div>
-    <div class="media-grid reveal">
-      <div class="media-tile" data-slot="01" data-kind="photo">
-        <div class="media-photo" data-fallback="img/photos/media-01.jpg" style="background-image:url('img/photos/media-01.jpg')"></div>
-        <div class="media-scrim"></div>
-        <span class="tag">Фото — 01 <span class="status">· фото коллектива</span></span><span class="lbl">Групповое фото коллектива</span>
-        <label class="media-upload-btn" title="Загрузить своё фото"><input type="file" accept="image/*" class="media-input" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 16V4M12 4l-4 4M12 4l4 4"/><path d="M4 15v3a1 1 0 001 1h14a1 1 0 001-1v-3"/></svg></label>
-        <button type="button" class="media-reset-btn" title="Вернуть заглушку">✕</button>
-        <button type="button" class="adjust-toggle-btn" title="Настроить положение и масштаб фото"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="5 9 2 12 5 15"/><polyline points="9 5 12 2 15 5"/><polyline points="15 19 12 22 9 19"/><polyline points="19 9 22 12 19 15"/><line x1="2" y1="12" x2="22" y2="12"/><line x1="12" y1="2" x2="12" y2="22"/></svg></button>
-        <div class="adjust-toolbar"><button type="button" class="adjust-zoom-out" title="Уменьшить">−</button><button type="button" class="adjust-zoom-in" title="Увеличить">+</button><button type="button" class="adjust-done-btn" title="Готово">Готово</button></div>
-      </div>
-      <div class="media-tile" data-slot="02" data-kind="video">
-        <div class="media-photo" data-fallback="https://images.unsplash.com/photo-1539074450440-232be6e93e2a?w=900&amp;q=70&amp;auto=format&amp;fit=crop" style="background-image:url('https://images.unsplash.com/photo-1539074450440-232be6e93e2a?w=900&amp;q=70&amp;auto=format&amp;fit=crop')"></div>
-        <div class="media-scrim"></div>
-        <span class="tag">Видео — 02 <span class="status">· заглушка</span></span><div class="play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div><span class="lbl">Видео выступления</span>
-        <label class="media-upload-btn" title="Загрузить своё видео"><input type="file" accept="video/*" class="media-input" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 16V4M12 4l-4 4M12 4l4 4"/><path d="M4 15v3a1 1 0 001 1h14a1 1 0 001-1v-3"/></svg></label>
-        <button type="button" class="media-reset-btn" title="Вернуть заглушку">✕</button>
-      </div>
-      <div class="media-tile" data-slot="03" data-kind="photo">
-        <div class="media-photo" data-fallback="img/photos/media-03.jpg" style="background-image:url('img/photos/media-03.jpg')"></div>
-        <div class="media-scrim"></div>
-        <span class="tag">Фото — 03 <span class="status">· фото коллектива</span></span><span class="lbl">Выступление на сцене</span>
-        <label class="media-upload-btn" title="Загрузить своё фото"><input type="file" accept="image/*" class="media-input" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 16V4M12 4l-4 4M12 4l4 4"/><path d="M4 15v3a1 1 0 001 1h14a1 1 0 001-1v-3"/></svg></label>
-        <button type="button" class="media-reset-btn" title="Вернуть заглушку">✕</button>
-        <button type="button" class="adjust-toggle-btn" title="Настроить положение и масштаб фото"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="5 9 2 12 5 15"/><polyline points="9 5 12 2 15 5"/><polyline points="15 19 12 22 9 19"/><polyline points="19 9 22 12 19 15"/><line x1="2" y1="12" x2="22" y2="12"/><line x1="12" y1="2" x2="12" y2="22"/></svg></button>
-        <div class="adjust-toolbar"><button type="button" class="adjust-zoom-out" title="Уменьшить">−</button><button type="button" class="adjust-zoom-in" title="Увеличить">+</button><button type="button" class="adjust-done-btn" title="Готово">Готово</button></div>
-      </div>
-      <div class="media-tile" data-slot="04" data-kind="photo">
-        <div class="media-photo" data-fallback="img/photos/media-04.jpg" style="background-image:url('img/photos/media-04.jpg')"></div>
-        <div class="media-scrim"></div>
-        <span class="tag">Фото — 04 <span class="status">· фото коллектива</span></span><span class="lbl">Фото со свадьбы</span>
-        <label class="media-upload-btn" title="Загрузить своё фото"><input type="file" accept="image/*" class="media-input" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 16V4M12 4l-4 4M12 4l4 4"/><path d="M4 15v3a1 1 0 001 1h14a1 1 0 001-1v-3"/></svg></label>
-        <button type="button" class="media-reset-btn" title="Вернуть заглушку">✕</button>
-        <button type="button" class="adjust-toggle-btn" title="Настроить положение и масштаб фото"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="5 9 2 12 5 15"/><polyline points="9 5 12 2 15 5"/><polyline points="15 19 12 22 9 19"/><polyline points="19 9 22 12 19 15"/><line x1="2" y1="12" x2="22" y2="12"/><line x1="12" y1="2" x2="12" y2="22"/></svg></button>
-        <div class="adjust-toolbar"><button type="button" class="adjust-zoom-out" title="Уменьшить">−</button><button type="button" class="adjust-zoom-in" title="Увеличить">+</button><button type="button" class="adjust-done-btn" title="Готово">Готово</button></div>
-      </div>
-      <div class="media-tile" data-slot="05" data-kind="video">
-        <div class="media-photo" data-fallback="https://images.unsplash.com/photo-1690182183994-85c53baa6d10?w=900&amp;q=70&amp;auto=format&amp;fit=crop" style="background-image:url('https://images.unsplash.com/photo-1690182183994-85c53baa6d10?w=900&amp;q=70&amp;auto=format&amp;fit=crop')"></div>
-        <div class="media-scrim"></div>
-        <span class="tag">Видео — 05 <span class="status">· заглушка</span></span><div class="play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div><span class="lbl">Видео со свадьбы</span>
-        <label class="media-upload-btn" title="Загрузить своё видео"><input type="file" accept="video/*" class="media-input" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 16V4M12 4l-4 4M12 4l4 4"/><path d="M4 15v3a1 1 0 001 1h14a1 1 0 001-1v-3"/></svg></label>
-        <button type="button" class="media-reset-btn" title="Вернуть заглушку">✕</button>
-      </div>
-      <div class="media-tile" data-slot="06" data-kind="photo">
-        <div class="media-photo" data-fallback="img/photos/media-06.jpg" style="background-image:url('img/photos/media-06.jpg')"></div>
-        <div class="media-scrim"></div>
-        <span class="tag">Фото — 06 <span class="status">· фото коллектива</span></span><span class="lbl">Крупный план: инструменты</span>
-        <label class="media-upload-btn" title="Загрузить своё фото"><input type="file" accept="image/*" class="media-input" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 16V4M12 4l-4 4M12 4l4 4"/><path d="M4 15v3a1 1 0 001 1h14a1 1 0 001-1v-3"/></svg></label>
-        <button type="button" class="media-reset-btn" title="Вернуть заглушку">✕</button>
-        <button type="button" class="adjust-toggle-btn" title="Настроить положение и масштаб фото"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="5 9 2 12 5 15"/><polyline points="9 5 12 2 15 5"/><polyline points="15 19 12 22 9 19"/><polyline points="19 9 22 12 19 15"/><line x1="2" y1="12" x2="22" y2="12"/><line x1="12" y1="2" x2="12" y2="22"/></svg></button>
-        <div class="adjust-toolbar"><button type="button" class="adjust-zoom-out" title="Уменьшить">−</button><button type="button" class="adjust-zoom-in" title="Увеличить">+</button><button type="button" class="adjust-done-btn" title="Готово">Готово</button></div>
-      </div>
+    <div class="section-head reveal"><span class="eyebrow">Почему мы</span><h2>Почему выбирают нас</h2></div>
+    <div class="reveal">
+      <div class="event-row"><span class="e-idx">01</span><h3>Стильные и современные</h3><p>Мы не только играем музыку, но и создаём атмосферу. Наш образ всегда соответствует событию — от строгой классики до модного стиля.</p></div>
+      <div class="event-row"><span class="e-idx">02</span><h3>Быстрая подготовка</h3><p>Быстро адаптируем программу под сроки и формат вашего мероприятия — готовы даже к внезапным изменениям.</p></div>
+      <div class="event-row"><span class="e-idx">03</span><h3>Индивидуальный подход</h3><p>Подберём репертуар под ваш формат: свадьба, вечеринка, фестиваль, корпоратив — любое событие станет особенным.</p></div>
+      <div class="event-row"><span class="e-idx">04</span><h3>Всегда на связи</h3><p>Прозрачная коммуникация, ответственность и внимание к деталям — мы ценим ваше время и доверие.</p></div>
+      <div class="event-row"><span class="e-idx">05</span><h3>Широкий репертуар</h3><p>От классики до современных поп-хитов — мы играем то, что трогает сердце, и всегда готовы к экспериментам.</p></div>
     </div>
-    <p class="media-hint">Нажмите на значок ⬆ в углу любой плитки, чтобы загрузить своё фото или видео с этого устройства — оно тут же появится на сайте и сохранится в этом браузере. Значок ✕ возвращает временную заглушку. У загруженных фото появляется значок ⊹ — им можно перетащить фото и приблизить/отдалить кнопками, чтобы точно вписать нужный кадр в рамку.</p>
   </div>
 </section>
-
 <!-- LIGHTBOX (video preview for uploaded media) -->
 <div class="lightbox" id="lightbox">
   <button type="button" class="lightbox-close" id="lightboxClose">✕</button>
@@ -1581,17 +1582,38 @@
           img.src = url;
         });
       }
+      function smartYFromAspect(imgAspect){
+        if (!imgAspect) return 50;
+        var rect = frame.getBoundingClientRect();
+        var containerAspect = (rect.width > 0 && rect.height > 0) ? (rect.width / rect.height) : 1;
+        return (imgAspect > containerAspect * 1.08) ? 30 : 50;
+      }
+      function knownAspectFor(imgUrl){
+        // frames for the site's own baked-in default photos carry data-aspect (the real width/height
+        // ratio, known ahead of time) so their position resolves instantly with no network round trip.
+        // That shortcut only applies while we're looking at that SAME default photo — a freshly
+        // uploaded file has different, unknown dimensions, so it must still be measured for real.
+        var known = frame.getAttribute('data-aspect');
+        if (!known) return null;
+        var fallbackEl = frame.hasAttribute('data-fallback') ? frame : frame.querySelector('[data-fallback]');
+        var fallback = fallbackEl && fallbackEl.getAttribute('data-fallback');
+        if (fallback && imgUrl === fallback) return parseFloat(known);
+        return null;
+      }
       function smartY(imgUrl){
-        return loadNaturalAspect(imgUrl).then(function(imgAspect){
-          if (!imgAspect) return 50;
-          var rect = frame.getBoundingClientRect();
-          var containerAspect = (rect.width > 0 && rect.height > 0) ? (rect.width / rect.height) : 1;
-          return (imgAspect > containerAspect * 1.08) ? 30 : 50;
-        });
+        // Skipping the "load the image again just to read its size" round trip for known photos is
+        // what fixes it: without this, every normal page load — not just fresh uploads — briefly
+        // rendered the photo centered, then snapped to its real position once the re-fetch resolved.
+        // On a slow connection that snap is exactly the "photos jumped" effect.
+        var knownAspect = knownAspectFor(imgUrl);
+        if (knownAspect) return Promise.resolve(smartYFromAspect(knownAspect));
+        return loadNaturalAspect(imgUrl).then(smartYFromAspect);
       }
       function load(initialUrl){
         return mediaGet(xfKey).then(function(v){
           if (v && typeof v.x === 'number'){ pos.x = v.x; pos.y = v.y; zoom = v.z; clamp(); applyVars(); return; }
+          var knownAspect = initialUrl ? knownAspectFor(initialUrl) : null;
+          if (knownAspect) { pos = { x: 50, y: smartYFromAspect(knownAspect) }; zoom = 1; clamp(); applyVars(); return; }
           pos = { x: 50, y: 50 }; zoom = 1; clamp(); applyVars();
           if (initialUrl) return smartY(initialUrl).then(function(y){ pos.y = y; clamp(); applyVars(); });
         }).catch(function(){ pos = { x: 50, y: 50 }; zoom = 1; applyVars(); });
