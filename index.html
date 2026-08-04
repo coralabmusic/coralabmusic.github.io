@@ -319,16 +319,25 @@
     .nav-links,.nav-phone,.nav-social{display:none;}
     .burger{display:flex;}
     section{padding:80px 0;}
-    .slide{padding:50px 24px;min-height:auto;}
-    .member-slides-col .slide{padding:50px 24px;min-height:auto;}
+    .slide{padding:50px 64px 50px 24px;min-height:auto;}
+    .member-slides-col .slide{padding:50px 64px 50px 24px;min-height:auto;}
     .logo-break{padding:76px 0;}
     .brand-signoff{padding:86px 0 70px;}
+    /* the fixed "Забронировать" tab on the right edge is ~43px wide at every viewport size;
+       .wrap's default 44px padding leaves almost no clearance from it on phones/tablets, so
+       right-aligned text and edge-hugging controls (stat rows, accordion +buttons) collide with
+       it. Give the right side extra breathing room here. */
+    .wrap{padding-right:64px;}
   }
   @media(max-width:560px){
     .media-grid{grid-template-columns:1fr;}
     .chip-row{gap:18px;}
     .chip-wrap .member-thumb{width:min(320px,82vw);height:min(320px,82vw);}
     .acc-body ul{columns:1;}
+    /* stat rows (number + right-aligned description) are too cramped side-by-side on a phone-width
+       .wrap — stack them instead of squeezing the description into a narrow right-aligned column. */
+    .stat-list div{flex-direction:column;align-items:flex-start;gap:6px;}
+    .stat-list span{text-align:left;max-width:100%;}
   }
 
   /* ---------- OWNER-ONLY EDITING UI ----------
@@ -347,7 +356,8 @@
   body:not(.owner-mode) .media-hint,
   body:not(.owner-mode) .hero-photo-tag,
   body:not(.owner-mode) .media-tile .tag,
-  body:not(.owner-mode) .chip-status{
+  body:not(.owner-mode) .chip-status,
+  body:not(.owner-mode) .owner-hint{
     display:none !important;
   }
 </style>
@@ -601,7 +611,7 @@
 <!-- MEMBERS -->
 <section id="members" style="background:var(--bg-alt);">
   <div class="wrap">
-    <div class="section-head reveal"><span class="eyebrow">Состав</span><h2>Музыканты коллектива</h2><p>Общий язык, разные голоса. Каждый участник CoraLab — лауреат международных конкурсов с собственным сольным и ансамблевым опытом. Нажмите на значок ⬆ у фото музыканта, чтобы загрузить его настоящий портрет.</p></div>
+    <div class="section-head reveal"><span class="eyebrow">Состав</span><h2>Музыканты коллектива</h2><p>Общий язык, разные голоса. Каждый участник CoraLab — лауреат международных конкурсов с собственным сольным и ансамблевым опытом.<span class="owner-hint"> Нажмите на значок ⬆ у фото музыканта, чтобы загрузить его настоящий портрет.</span></p></div>
   </div>
 
   <div class="split-wrap member-split reveal">
