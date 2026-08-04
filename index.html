@@ -330,9 +330,44 @@
     .chip-wrap .member-thumb{width:min(320px,82vw);height:min(320px,82vw);}
     .acc-body ul{columns:1;}
   }
+
+  /* ---------- OWNER-ONLY EDITING UI ----------
+     Everything below lets someone reshape a photo on this site (upload/remove/pan/zoom) and the
+     hint text explaining how. None of that is meant for regular visitors — it's hidden by default
+     for everyone, and only revealed in this browser after opening the site once with the private
+     owner link (see the tiny script right after <body>). This is a visibility gate, not real
+     account security: the toggle lives in client-side code, so it only stops casual visitors from
+     noticing or using these controls, not a determined person reading the page source. */
+  body:not(.owner-mode) .media-upload-btn,
+  body:not(.owner-mode) .media-reset-btn,
+  body:not(.owner-mode) .adjust-toggle-btn,
+  body:not(.owner-mode) .adjust-toolbar,
+  body:not(.owner-mode) .msvid-upload-btn,
+  body:not(.owner-mode) .msvid-reset-btn,
+  body:not(.owner-mode) .media-hint,
+  body:not(.owner-mode) .hero-photo-tag,
+  body:not(.owner-mode) .media-tile .tag,
+  body:not(.owner-mode) .chip-status{
+    display:none !important;
+  }
 </style>
 </head>
 <body>
+<script>
+  // Owner-mode unlock: visiting the site once with ?owner=SECRET remembers this browser as the
+  // owner's (via localStorage), revealing the upload/edit controls hidden from everyone else.
+  // Visit with ?owner=off to forget this browser again. This is a convenience gate for a small
+  // band site with no backend, not real authentication — the "secret" lives in this file's own
+  // source, so it only keeps the controls out of casual visitors' way.
+  (function(){
+    try {
+      var key = new URLSearchParams(location.search).get('owner');
+      if (key === 'coralab-tima-2026') { localStorage.setItem('coralab-owner', '1'); }
+      else if (key === 'off') { localStorage.removeItem('coralab-owner'); }
+      if (localStorage.getItem('coralab-owner') === '1') { document.body.classList.add('owner-mode'); }
+    } catch(e){}
+  })();
+</script>
 
 <header>
   <div class="nav">
@@ -1473,16 +1508,41 @@
         mirrors.forEach(function(m){ if (m){ m.style.setProperty('--ppos', posVal); m.style.setProperty('--pzoom', zoomVal); } });
       }
       function persist(){ mediaSet(xfKey, { x: pos.x, y: pos.y, z: zoom }).catch(function(){}); }
-      function load(){
+
+      // Newly uploaded photos rarely have their subject dead-center, and background-size:cover
+      // crops equally from both sides of whichever axis overflows the frame. For frames that end
+      // up cropping top/bottom (photo proportionally wider than its box), a plain 50/50 center
+      // often slices off heads. Bias that crop toward the upper third by default instead — cheap
+      // to compute (just the image's natural size, no real face detection) but much less likely
+      // to look "shifted" right after an upload, before anyone has touched the manual adjust tool.
+      function loadNaturalAspect(url){
+        return new Promise(function(resolve){
+          if (!url) { resolve(null); return; }
+          var img = new Image();
+          img.onload = function(){ resolve(img.naturalWidth && img.naturalHeight ? (img.naturalWidth / img.naturalHeight) : null); };
+          img.onerror = function(){ resolve(null); };
+          img.src = url;
+        });
+      }
+      function smartY(imgUrl){
+        return loadNaturalAspect(imgUrl).then(function(imgAspect){
+          if (!imgAspect) return 50;
+          var rect = frame.getBoundingClientRect();
+          var containerAspect = (rect.width > 0 && rect.height > 0) ? (rect.width / rect.height) : 1;
+          return (imgAspect > containerAspect * 1.08) ? 30 : 50;
+        });
+      }
+      function load(initialUrl){
         return mediaGet(xfKey).then(function(v){
-          if (v && typeof v.x === 'number'){ pos.x = v.x; pos.y = v.y; zoom = v.z; }
-          else { pos = { x: 50, y: 50 }; zoom = 1; }
-          clamp(); applyVars();
+          if (v && typeof v.x === 'number'){ pos.x = v.x; pos.y = v.y; zoom = v.z; clamp(); applyVars(); return; }
+          pos = { x: 50, y: 50 }; zoom = 1; clamp(); applyVars();
+          if (initialUrl) return smartY(initialUrl).then(function(y){ pos.y = y; clamp(); applyVars(); });
         }).catch(function(){ pos = { x: 50, y: 50 }; zoom = 1; applyVars(); });
       }
-      function resetTransform(){
+      function resetTransform(imgUrl){
         pos = { x: 50, y: 50 }; zoom = 1; applyVars();
         mediaDelete(xfKey).catch(function(){});
+        if (imgUrl) smartY(imgUrl).then(function(y){ pos.y = y; clamp(); applyVars(); persist(); });
       }
 
       toggleBtn.addEventListener('click', function(e){
@@ -1583,7 +1643,7 @@
         if (statusEl) statusEl.textContent = '· заглушка';
         photoEl.style.backgroundImage = "url('" + fallbackUrl + "')";
         videoUrl = null;
-        if (adjuster) adjuster.reset();
+        if (adjuster) adjuster.reset(fallbackUrl);
       }
       function showVideoThumb(blob){
         var v = document.createElement('video');
@@ -1604,7 +1664,7 @@
       }
 
       // restore previously uploaded media for this tile (same browser only)
-      if (adjuster) adjuster.load();
+      if (adjuster) adjuster.load(fallbackUrl);
       mediaGet(key).then(function(blob){
         if (!blob) return;
         markCustom();
@@ -1626,10 +1686,12 @@
         mediaSet(key, file).then(function(){
           setBusy(false);
           markCustom();
-          if (adjuster) adjuster.reset();
           if (kind === 'photo') {
-            photoEl.style.backgroundImage = "url('" + URL.createObjectURL(file) + "')";
+            var url = URL.createObjectURL(file);
+            if (adjuster) adjuster.reset(url);
+            photoEl.style.backgroundImage = "url('" + url + "')";
           } else {
+            if (adjuster) adjuster.reset();
             videoUrl = URL.createObjectURL(file);
             showVideoThumb(file);
           }
@@ -1668,10 +1730,10 @@
         simg.classList.remove('has-custom');
         if (statusEl) statusEl.textContent = '· заглушка';
         photoLayer.style.backgroundImage = "url('" + fallbackUrl + "')";
-        adjuster.reset();
+        adjuster.reset(fallbackUrl);
       }
 
-      adjuster.load();
+      adjuster.load(fallbackUrl);
       mediaGet(key).then(function(blob){
         if (!blob) return;
         markCustom();
@@ -1685,8 +1747,9 @@
         mediaSet(key, file).then(function(){
           setBusy(false);
           markCustom();
-          adjuster.reset();
-          photoLayer.style.backgroundImage = "url('" + URL.createObjectURL(file) + "')";
+          var url = URL.createObjectURL(file);
+          adjuster.reset(url);
+          photoLayer.style.backgroundImage = "url('" + url + "')";
         }).catch(function(){ setBusy(false); alert('Не удалось сохранить файл в этом браузере. Попробуйте файл меньшего размера.'); });
         input.value = '';
       });
@@ -1721,10 +1784,10 @@
         chip.classList.remove('has-custom');
         if (statusEl) statusEl.textContent = 'заглушка';
         applyUrl(fallbackUrl);
-        adjuster.reset();
+        adjuster.reset(fallbackUrl);
       }
 
-      adjuster.load();
+      adjuster.load(fallbackUrl);
       mediaGet(key).then(function(blob){
         if (!blob) return;
         markCustom();
@@ -1738,8 +1801,9 @@
         mediaSet(key, file).then(function(){
           chip.classList.remove('is-uploading');
           markCustom();
-          adjuster.reset();
-          applyUrl(URL.createObjectURL(file));
+          var url = URL.createObjectURL(file);
+          adjuster.reset(url);
+          applyUrl(url);
         }).catch(function(){ chip.classList.remove('is-uploading'); alert('Не удалось сохранить файл в этом браузере. Попробуйте файл меньшего размера.'); });
         input.value = '';
       });
