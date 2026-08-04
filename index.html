@@ -91,9 +91,16 @@
   .simg-photo{position:absolute;inset:0;background-size:cover;background-position:var(--ppos,center);transform:scale(var(--pzoom,1));transition:transform .3s ease;}
   .img-stack::after{content:"";position:absolute;inset:0;background:linear-gradient(120deg, rgba(36,35,32,.35), rgba(36,35,32,0) 45%);pointer-events:none;}
 
+  /* ---- hero photo, mobile/tablet: below 901px the sticky side .img-col is hidden, so each
+     slide gets its own inline photo banner right up top instead — same photo, same upload/pan-zoom
+     system (data-img key), just laid out in the normal flow instead of a cross-fading side panel. */
+  .hero-mobile-photo{position:relative;width:100%;aspect-ratio:4/3;border-radius:16px;overflow:hidden;margin-bottom:26px;background:var(--card);}
+  .hero-mobile-photo .simg-photo{filter:grayscale(.1) brightness(.94);}
+  .hero-mobile-photo::after{content:"";position:absolute;inset:0;background:linear-gradient(200deg, rgba(36,35,32,.4), rgba(36,35,32,0) 40%);pointer-events:none;}
   @media(min-width:901px){
     .rail{display:flex;}
     .img-col{display:block;}
+    .hero-mobile-photo{display:none;}
   }
 
   /* ---------- QUICK NAV (boroda.com-style hover columns) ---------- */
@@ -429,6 +436,14 @@
   <div class="slides-col">
     <div class="slide" data-idx="01">
       <span class="idx-mobile">01 / 05</span>
+      <div class="simg hero-mobile-photo" data-img="01" data-fallback="img/photos/hero-01.jpg">
+        <div class="simg-photo" style="background-image:url('img/photos/hero-01.jpg')"></div>
+        <span class="hero-photo-tag">Фото 01 / 05 <span class="status">· фото коллектива</span></span>
+        <label class="media-upload-btn" title="Загрузить своё фото"><input type="file" accept="image/*" class="media-input" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 16V4M12 4l-4 4M12 4l4 4"/><path d="M4 15v3a1 1 0 001 1h14a1 1 0 001-1v-3"/></svg></label>
+        <button type="button" class="media-reset-btn" title="Вернуть заглушку">✕</button>
+        <button type="button" class="adjust-toggle-btn" title="Настроить положение и масштаб фото"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="5 9 2 12 5 15"/><polyline points="9 5 12 2 15 5"/><polyline points="15 19 12 22 9 19"/><polyline points="19 9 22 12 19 15"/><line x1="2" y1="12" x2="22" y2="12"/><line x1="12" y1="2" x2="12" y2="22"/></svg></button>
+        <div class="adjust-toolbar"><button type="button" class="adjust-zoom-out" title="Уменьшить">−</button><button type="button" class="adjust-zoom-in" title="Увеличить">+</button><button type="button" class="adjust-done-btn" title="Готово">Готово</button></div>
+      </div>
       <h2>CoraLab — бэнд для вашего события</h2>
       <p>Классика, кино, джаз и поп-хиты в живом исполнении. Мы не просто играем музыку — мы создаём атмосферу вашего события.</p>
       <a href="#contact" class="link-arrow">Забронировать выступление <svg viewBox="0 0 20 9" fill="none"><path stroke="currentColor" stroke-width="1.5" d="M0 4.5h18M13 0l5 4.5-5 4.5"/></svg></a>
@@ -436,6 +451,14 @@
 
     <div class="slide" data-idx="02">
       <span class="idx-mobile">02 / 05</span>
+      <div class="simg hero-mobile-photo" data-img="02" data-fallback="img/photos/hero-02.jpg">
+        <div class="simg-photo" style="background-image:url('img/photos/hero-02.jpg')"></div>
+        <span class="hero-photo-tag">Фото 02 / 05 <span class="status">· фото коллектива</span></span>
+        <label class="media-upload-btn" title="Загрузить своё фото"><input type="file" accept="image/*" class="media-input" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 16V4M12 4l-4 4M12 4l4 4"/><path d="M4 15v3a1 1 0 001 1h14a1 1 0 001-1v-3"/></svg></label>
+        <button type="button" class="media-reset-btn" title="Вернуть заглушку">✕</button>
+        <button type="button" class="adjust-toggle-btn" title="Настроить положение и масштаб фото"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="5 9 2 12 5 15"/><polyline points="9 5 12 2 15 5"/><polyline points="15 19 12 22 9 19"/><polyline points="19 9 22 12 19 15"/><line x1="2" y1="12" x2="22" y2="12"/><line x1="12" y1="2" x2="12" y2="22"/></svg></button>
+        <div class="adjust-toolbar"><button type="button" class="adjust-zoom-out" title="Уменьшить">−</button><button type="button" class="adjust-zoom-in" title="Увеличить">+</button><button type="button" class="adjust-done-btn" title="Готово">Готово</button></div>
+      </div>
       <h2>О коллективе</h2>
       <p>Бэнд, собранный музыкантом Тимофеем Убогих. Все участники — лауреаты международных конкурсов, играем в разных стилях: от барокко до кино-саундтреков и современных хитов.</p>
       <a href="#about" class="link-arrow">Читать о бэнде <svg viewBox="0 0 20 9" fill="none"><path stroke="currentColor" stroke-width="1.5" d="M0 4.5h18M13 0l5 4.5-5 4.5"/></svg></a>
@@ -443,6 +466,14 @@
 
     <div class="slide" data-idx="03">
       <span class="idx-mobile">03 / 05</span>
+      <div class="simg hero-mobile-photo" data-img="03" data-fallback="img/photos/hero-03.jpg">
+        <div class="simg-photo" style="background-image:url('img/photos/hero-03.jpg')"></div>
+        <span class="hero-photo-tag">Фото 03 / 05 <span class="status">· фото коллектива</span></span>
+        <label class="media-upload-btn" title="Загрузить своё фото"><input type="file" accept="image/*" class="media-input" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 16V4M12 4l-4 4M12 4l4 4"/><path d="M4 15v3a1 1 0 001 1h14a1 1 0 001-1v-3"/></svg></label>
+        <button type="button" class="media-reset-btn" title="Вернуть заглушку">✕</button>
+        <button type="button" class="adjust-toggle-btn" title="Настроить положение и масштаб фото"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="5 9 2 12 5 15"/><polyline points="9 5 12 2 15 5"/><polyline points="15 19 12 22 9 19"/><polyline points="19 9 22 12 19 15"/><line x1="2" y1="12" x2="22" y2="12"/><line x1="12" y1="2" x2="12" y2="22"/></svg></button>
+        <div class="adjust-toolbar"><button type="button" class="adjust-zoom-out" title="Уменьшить">−</button><button type="button" class="adjust-zoom-in" title="Увеличить">+</button><button type="button" class="adjust-done-btn" title="Готово">Готово</button></div>
+      </div>
       <h2>Состав коллектива</h2>
       <p>Разные инструменты и голоса, один общий звук. У каждого музыканта — собственный сольный и ансамблевый опыт.</p>
       <a href="#members" class="link-arrow">Смотреть состав <svg viewBox="0 0 20 9" fill="none"><path stroke="currentColor" stroke-width="1.5" d="M0 4.5h18M13 0l5 4.5-5 4.5"/></svg></a>
@@ -450,6 +481,14 @@
 
     <div class="slide" data-idx="04">
       <span class="idx-mobile">04 / 05</span>
+      <div class="simg hero-mobile-photo" data-img="04" data-fallback="img/photos/hero-04.jpg">
+        <div class="simg-photo" style="background-image:url('img/photos/hero-04.jpg')"></div>
+        <span class="hero-photo-tag">Фото 04 / 05 <span class="status">· фото коллектива</span></span>
+        <label class="media-upload-btn" title="Загрузить своё фото"><input type="file" accept="image/*" class="media-input" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 16V4M12 4l-4 4M12 4l4 4"/><path d="M4 15v3a1 1 0 001 1h14a1 1 0 001-1v-3"/></svg></label>
+        <button type="button" class="media-reset-btn" title="Вернуть заглушку">✕</button>
+        <button type="button" class="adjust-toggle-btn" title="Настроить положение и масштаб фото"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="5 9 2 12 5 15"/><polyline points="9 5 12 2 15 5"/><polyline points="15 19 12 22 9 19"/><polyline points="19 9 22 12 19 15"/><line x1="2" y1="12" x2="22" y2="12"/><line x1="12" y1="2" x2="12" y2="22"/></svg></button>
+        <div class="adjust-toolbar"><button type="button" class="adjust-zoom-out" title="Уменьшить">−</button><button type="button" class="adjust-zoom-in" title="Увеличить">+</button><button type="button" class="adjust-done-btn" title="Готово">Готово</button></div>
+      </div>
       <h2>Форматы мероприятий</h2>
       <p>Свадьбы, корпоративы, дни рождения, презентации, фестивали — подбираем программу под формат и настроение вашего события.</p>
       <a href="#events" class="link-arrow">Смотреть форматы <svg viewBox="0 0 20 9" fill="none"><path stroke="currentColor" stroke-width="1.5" d="M0 4.5h18M13 0l5 4.5-5 4.5"/></svg></a>
@@ -457,6 +496,14 @@
 
     <div class="slide" data-idx="05">
       <span class="idx-mobile">05 / 05</span>
+      <div class="simg hero-mobile-photo" data-img="05" data-fallback="https://images.unsplash.com/photo-1690182183994-85c53baa6d10?w=1200&amp;q=70&amp;auto=format&amp;fit=crop">
+        <div class="simg-photo" style="background-image:url('https://images.unsplash.com/photo-1690182183994-85c53baa6d10?w=1200&amp;q=70&amp;auto=format&amp;fit=crop')"></div>
+        <span class="hero-photo-tag">Фото 05 / 05 <span class="status">· заглушка</span></span>
+        <label class="media-upload-btn" title="Загрузить своё фото"><input type="file" accept="image/*" class="media-input" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 16V4M12 4l-4 4M12 4l4 4"/><path d="M4 15v3a1 1 0 001 1h14a1 1 0 001-1v-3"/></svg></label>
+        <button type="button" class="media-reset-btn" title="Вернуть заглушку">✕</button>
+        <button type="button" class="adjust-toggle-btn" title="Настроить положение и масштаб фото"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="5 9 2 12 5 15"/><polyline points="9 5 12 2 15 5"/><polyline points="15 19 12 22 9 19"/><polyline points="19 9 22 12 19 15"/><line x1="2" y1="12" x2="22" y2="12"/><line x1="12" y1="2" x2="12" y2="22"/></svg></button>
+        <div class="adjust-toolbar"><button type="button" class="adjust-zoom-out" title="Уменьшить">−</button><button type="button" class="adjust-zoom-in" title="Увеличить">+</button><button type="button" class="adjust-done-btn" title="Готово">Готово</button></div>
+      </div>
       <h2>Программа и репертуар</h2>
       <p>Более 200 произведений в девяти разделах — от новогодней классики до поп-хитов и джаза. Список постоянно пополняется под ваши пожелания.</p>
       <a href="#program" class="link-arrow">Смотреть программу <svg viewBox="0 0 20 9" fill="none"><path stroke="currentColor" stroke-width="1.5" d="M0 4.5h18M13 0l5 4.5-5 4.5"/></svg></a>
