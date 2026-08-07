@@ -314,17 +314,10 @@
   .cf-icon{flex:none;width:40px;height:40px;border-radius:50%;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;color:var(--gold);background:rgba(232,185,35,.06);transition:border-color .25s ease,background .25s ease;}
   .cf-icon svg{width:17px;height:17px;}
   .contact-form-card .cf-row:hover .cf-icon{border-color:var(--gold);background:var(--gold);color:var(--ink);}
-  .cf-icon-spacer{background:transparent;border-color:transparent;}
-  .contact-form-card .cf-row:hover .cf-icon-spacer{background:transparent!important;border-color:transparent!important;}
   .cf-body{flex:1;min-width:0;}
   .contact-form-card b{display:block;font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--faint);margin-bottom:6px;}
   .contact-form-card a,.contact-form-card span{font-size:17px;color:var(--text);}
   .contact-form-card a:hover{color:var(--gold);}
-  .cf-row-social{padding-top:22px;padding-bottom:22px;}
-  .cf-social-links{display:inline-flex;gap:12px;flex-wrap:wrap;margin-top:2px;}
-  .cf-social-links a{width:44px;height:44px;border-radius:50%;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;color:var(--muted);transition:border-color .2s ease,color .2s ease,background .2s ease,transform .2s ease;}
-  .cf-social-links a:hover{border-color:var(--gold);color:var(--ink);background:var(--gold);transform:translateY(-3px);}
-  .cf-social-links svg{width:18px;height:18px;}
   .btn-gold{display:inline-flex;align-items:center;justify-content:center;gap:10px;background:var(--gold);color:var(--ink);padding:18px 30px;font-size:13px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;margin-top:32px;width:100%;transition:background .25s ease,transform .25s ease,gap .25s ease;}
   .btn-gold svg{width:16px;height:8px;transition:transform .25s ease;}
   .btn-gold:hover{background:#fff;transform:translateY(-2px);gap:14px;}
@@ -333,6 +326,11 @@
   .footer-inner{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;}
   footer p{color:var(--faint);font-size:12px;}
   .footer-logo{height:34px;width:auto;display:block;}
+  .footer-right{display:flex;align-items:center;gap:26px;flex-wrap:wrap;}
+  .footer-social{display:flex;gap:10px;}
+  .footer-social a{width:36px;height:36px;border-radius:50%;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;color:var(--muted);transition:border-color .2s ease,color .2s ease,background .2s ease,transform .2s ease;}
+  .footer-social a:hover{border-color:var(--gold);color:var(--ink);background:var(--gold);transform:translateY(-3px);}
+  .footer-social svg{width:15px;height:15px;}
   .to-top{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);}
   .to-top:hover{color:var(--gold);}
 
@@ -1330,15 +1328,9 @@
           <span class="cf-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg></span>
           <div class="cf-body"><b>Telegram</b><a href="https://t.me/Timonviol" target="_blank" rel="noopener">Написать в Telegram</a></div>
         </div>
-        <div class="cf-row cf-row-social">
-          <span class="cf-icon cf-icon-spacer" aria-hidden="true"></span>
-          <div class="cf-body">
-            <b>Соцсети</b>
-            <span class="cf-social-links">
-              <a href="https://www.instagram.com/coralaband/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r=".6" fill="currentColor" stroke="none"/></svg></a>
-              <a href="https://vk.ru/coralab" target="_blank" rel="noopener" aria-label="VK"><svg viewBox="0 0 24 24" fill="currentColor"><text x="12" y="16" text-anchor="middle" font-size="11" font-weight="800" font-family="Arial,sans-serif">VK</text></svg></a>
-            </span>
-          </div>
+        <div class="cf-row">
+          <span class="cf-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6l9 7 9-7"/><rect x="3" y="5" width="18" height="14" rx="2"/></svg></span>
+          <div class="cf-body"><b>Email</b><a href="mailto:coraLabmusic@yandex.ru?subject=Бронирование%20CoraLab">Написать на почту</a></div>
         </div>
         <a href="tel:+79319878407" class="btn-gold">Позвонить сейчас <svg viewBox="0 0 20 9" fill="none"><path stroke="currentColor" stroke-width="1.5" d="M0 4.5h18M13 0l5 4.5-5 4.5"/></svg></a>
       </div>
@@ -1358,7 +1350,14 @@
   <div class="wrap footer-inner">
     <img src="img/logo-lockup.png" alt="CoraLab" class="footer-logo" loading="lazy">
     <p>© 2026 CoraLab — бэнд. Все права защищены.</p>
-    <a href="#hero" class="to-top">Наверх ↑</a>
+    <div class="footer-right">
+      <div class="footer-social">
+        <a href="https://t.me/Timonviol" target="_blank" rel="noopener" aria-label="Telegram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg></a>
+        <a href="https://www.instagram.com/coralaband/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r=".6" fill="currentColor" stroke="none"/></svg></a>
+        <a href="https://vk.ru/coralab" target="_blank" rel="noopener" aria-label="VK"><svg viewBox="0 0 24 24" fill="currentColor"><text x="12" y="16" text-anchor="middle" font-size="11" font-weight="800" font-family="Arial,sans-serif">VK</text></svg></a>
+      </div>
+      <a href="#hero" class="to-top">Наверх ↑</a>
+    </div>
   </div>
 </footer>
 
