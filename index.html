@@ -314,14 +314,17 @@
   .cf-icon{flex:none;width:40px;height:40px;border-radius:50%;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;color:var(--gold);background:rgba(232,185,35,.06);transition:border-color .25s ease,background .25s ease;}
   .cf-icon svg{width:17px;height:17px;}
   .contact-form-card .cf-row:hover .cf-icon{border-color:var(--gold);background:var(--gold);color:var(--ink);}
+  .cf-icon-spacer{background:transparent;}
+  .contact-form-card .cf-row:hover .cf-icon-spacer{background:transparent!important;border-color:transparent!important;}
   .cf-body{flex:1;min-width:0;}
   .contact-form-card b{display:block;font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--faint);margin-bottom:6px;}
   .contact-form-card a,.contact-form-card span{font-size:17px;color:var(--text);}
   .contact-form-card a:hover{color:var(--gold);}
-  .cf-social-links{display:inline-flex;gap:10px;flex-wrap:wrap;}
-  .cf-social-links a{width:38px;height:38px;border-radius:50%;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;color:var(--muted);transition:border-color .2s ease,color .2s ease,background .2s ease;}
-  .cf-social-links a:hover{border-color:var(--gold);color:var(--ink);background:var(--gold);}
-  .cf-social-links svg{width:15px;height:15px;}
+  .cf-row-social{padding-top:22px;padding-bottom:22px;}
+  .cf-social-links{display:inline-flex;gap:12px;flex-wrap:wrap;margin-top:2px;}
+  .cf-social-links a{width:44px;height:44px;border-radius:50%;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;color:var(--muted);transition:border-color .2s ease,color .2s ease,background .2s ease,transform .2s ease;}
+  .cf-social-links a:hover{border-color:var(--gold);color:var(--ink);background:var(--gold);transform:translateY(-3px);}
+  .cf-social-links svg{width:18px;height:18px;}
   .btn-gold{display:inline-flex;align-items:center;justify-content:center;gap:10px;background:var(--gold);color:var(--ink);padding:18px 30px;font-size:13px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;margin-top:32px;width:100%;transition:background .25s ease,transform .25s ease,gap .25s ease;}
   .btn-gold svg{width:16px;height:8px;transition:transform .25s ease;}
   .btn-gold:hover{background:#fff;transform:translateY(-2px);gap:14px;}
@@ -1327,8 +1330,8 @@
           <span class="cf-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg></span>
           <div class="cf-body"><b>Telegram</b><a href="https://t.me/Timonviol" target="_blank" rel="noopener">Написать в Telegram</a></div>
         </div>
-        <div class="cf-row">
-          <span class="cf-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="9" x2="20" y2="9"/><line x1="4" y1="15" x2="20" y2="15"/><line x1="10" y1="3" x2="8" y2="21"/><line x1="16" y1="3" x2="14" y2="21"/></svg></span>
+        <div class="cf-row cf-row-social">
+          <span class="cf-icon cf-icon-spacer" aria-hidden="true"></span>
           <div class="cf-body">
             <b>Соцсети</b>
             <span class="cf-social-links">
