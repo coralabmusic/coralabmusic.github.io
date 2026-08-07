@@ -1671,7 +1671,18 @@
     // ---- site-wide default photo positions, baked in from the owner's exported adjustments ----
     // Empty until the owner uses "Экспортировать позиции фото" (owner mode only) and sends the file
     // back for these values to be filled in - see setupPhotoAdjust/load() below for how it's used.
-    var DEFAULT_POSITIONS = {};
+    var DEFAULT_POSITIONS = {
+      'hero-01': { x: 52.4, y: 70.31, z: 1 },
+      'hero-02': { x: 62.13, y: 36.78, z: 1 },
+      'hero-03': { x: 72.9, y: 43.39, z: 1 },
+      'hero-04': { x: 36.09, y: 50.84, z: 1 },
+      'media-03': { x: 32.49, y: 29.05, z: 1 },
+      'member-01': { x: 54.92, y: 17.42, z: 1 },
+      'member-02': { x: 51.52, y: 5.68, z: 1 },
+      'member-03': { x: 47.92, y: 12.12, z: 1 },
+      'member-04': { x: 0, y: 0, z: 1 },
+      'member-05': { x: 67.99, y: 14.39, z: 1 }
+    };
 
     // ---- pan/zoom adjustment for uploaded photos: drag to move, +/- to zoom, stored alongside the photo ----
     function setupPhotoAdjust(frame, key, mirrors){
