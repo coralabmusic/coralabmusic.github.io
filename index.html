@@ -810,14 +810,14 @@
         <button type="button" class="adjust-toggle-btn" title="Настроить положение и масштаб фото"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="5 9 2 12 5 15"/><polyline points="9 5 12 2 15 5"/><polyline points="15 19 12 22 9 19"/><polyline points="19 9 22 12 19 15"/><line x1="2" y1="12" x2="22" y2="12"/><line x1="12" y1="2" x2="12" y2="22"/></svg></button>
         <div class="adjust-toolbar"><button type="button" class="adjust-zoom-out" title="Уменьшить">−</button><button type="button" class="adjust-zoom-in" title="Увеличить">+</button><button type="button" class="adjust-done-btn" title="Готово">Готово</button></div>
       </div>
-      <div class="media-tile" data-slot="02" data-kind="video">
-        <div class="media-photo" data-fallback="https://images.unsplash.com/photo-1539074450440-232be6e93e2a?w=900&amp;q=70&amp;auto=format&amp;fit=crop" style="background-image:url('https://images.unsplash.com/photo-1539074450440-232be6e93e2a?w=900&amp;q=70&amp;auto=format&amp;fit=crop')"></div>
+      <div class="media-tile" data-slot="02" data-kind="video" data-fallback-video="img/video/media-02.mp4">
+        <div class="media-photo" data-fallback="img/photos/media-02.jpg" style="background-image:url('img/photos/media-02.jpg')"></div>
         <div class="media-scrim"></div>
-        <span class="tag">Видео — 02 <span class="status">· заглушка</span></span><div class="play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div><span class="lbl">Видео выступления</span>
+        <span class="tag">Видео — 02 <span class="status">· видео</span></span><div class="play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div><span class="lbl">Видео выступления</span>
         <label class="media-upload-btn" title="Загрузить своё видео"><input type="file" accept="video/*" class="media-input" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 16V4M12 4l-4 4M12 4l4 4"/><path d="M4 15v3a1 1 0 001 1h14a1 1 0 001-1v-3"/></svg></label>
         <button type="button" class="media-reset-btn" title="Вернуть заглушку">✕</button>
       </div>
-      <div class="media-tile" data-slot="03" data-kind="photo" data-aspect="0.6657">
+      <div class="media-tile" data-slot="03" data-kind="photo" data-aspect="1.4997">
         <div class="media-photo" data-fallback="img/photos/media-03.jpg" style="background-image:url('img/photos/media-03.jpg')"></div>
         <div class="media-scrim"></div>
         <span class="tag">Фото — 03 <span class="status">· фото коллектива</span></span><span class="lbl">Выступление на сцене</span>
@@ -1699,7 +1699,6 @@
       'hero-02': { x: 62.13, y: 36.78, z: 1 },
       'hero-03': { x: 72.9, y: 43.39, z: 1 },
       'hero-04': { x: 36.09, y: 50.84, z: 1 },
-      'media-03': { x: 32.49, y: 29.05, z: 1 },
       'member-01': { x: 54.92, y: 17.42, z: 1 },
       'member-02': { x: 51.52, y: 5.68, z: 1 },
       'member-03': { x: 47.92, y: 12.12, z: 1 },
@@ -1879,7 +1878,8 @@
       var input = tile.querySelector('.media-input');
       var resetBtn = tile.querySelector('.media-reset-btn');
       var fallbackUrl = photoEl.getAttribute('data-fallback');
-      var videoUrl = null;
+      var fallbackVideoUrl = tile.getAttribute('data-fallback-video');
+      var videoUrl = fallbackVideoUrl || null;
       var adjuster = (kind === 'photo') ? setupPhotoAdjust(tile, key) : null;
 
       function setBusy(on){ tile.classList.toggle('is-uploading', !!on); }
@@ -1890,9 +1890,9 @@
       }
       function markPlaceholder(){
         tile.classList.remove('has-custom');
-        if (statusEl) statusEl.textContent = '· заглушка';
+        if (statusEl) statusEl.textContent = fallbackVideoUrl ? '· видео' : '· заглушка';
         photoEl.style.backgroundImage = "url('" + fallbackUrl + "')";
-        videoUrl = null;
+        videoUrl = fallbackVideoUrl || null;
         if (adjuster) adjuster.reset(fallbackUrl);
       }
       function showVideoThumb(blob){
