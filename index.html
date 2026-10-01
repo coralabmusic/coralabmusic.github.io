@@ -151,13 +151,11 @@
 
   /* ---------- MEMBERS: cinematic split-scroll ---------- */
   .member-thumb{width:528px;height:528px;flex:none;border-radius:50%;overflow:hidden;position:relative;border:1px solid var(--line);}
-  .member-thumb .ph{position:absolute;inset:0;background-size:cover;background-position:var(--ppos,center);filter:grayscale(.6) brightness(.85);transform:scale(var(--pzoom,1));transition:filter .4s ease,transform .5s ease;}
+  .member-thumb .ph{position:absolute;inset:0;background-size:cover;background-position:var(--ppos,center);filter:grayscale(var(--gs,.6)) brightness(var(--br,.85));transform:scale(var(--pzoom,1));transition:filter .4s ease,transform .5s ease;}
   .chip-wrap:hover .member-thumb .ph{filter:grayscale(0) brightness(1);transform:scale(calc(1.08 * var(--pzoom,1)));}
-  /* touch devices have no real hover, so on mobile the photo colorizes as it scrolls into view
-     instead of waiting for a tap (see the chip-wrap IntersectionObserver below) */
-  @media(max-width:980px){
-    .chip-wrap.in-view .member-thumb .ph{filter:grayscale(0) brightness(1);transform:scale(calc(1.08 * var(--pzoom,1)));}
-  }
+  /* touch devices have no real hover, so on mobile --gs/--br are driven continuously by scroll
+     position instead (see the chip proximity-color script below): fully colored at screen center,
+     back to grayscale the further a photo sits from it */
   .member-split{padding-top:0;}
   .member-slides-col .slide{min-height:90vh;padding:44px 56px 44px 0;}
   /* photo is now the lead element, so the chip stacks above the name instead of sitting beside it */
@@ -1394,16 +1392,29 @@
   }, { threshold: 0.1 });
   revealEls.forEach(function(el){ io.observe(el); });
 
-  // mobile-only: colorize each member photo as it scrolls into view, since touch screens have no
-  // hover to trigger the desktop :hover effect (see .chip-wrap.in-view rule above)
+  // mobile-only: touch screens have no hover, so tie each member photo's color continuously to how
+  // close it sits to the vertical center of the screen (centered = full color, far = grayscale)
   if (window.matchMedia('(max-width:980px)').matches) {
-    var chipEls = document.querySelectorAll('.chip-wrap');
-    var chipIo = new IntersectionObserver(function(entries){
-      entries.forEach(function(entry){
-        if (entry.isIntersecting) { entry.target.classList.add('in-view'); chipIo.unobserve(entry.target); }
+    var chipPhotos = Array.prototype.slice.call(document.querySelectorAll('.chip-wrap .member-thumb .ph'));
+    var chipTicking = false;
+    function updateChipProximity(){
+      var viewportCenter = window.innerHeight / 2;
+      chipPhotos.forEach(function(ph){
+        var rect = ph.getBoundingClientRect();
+        var elCenter = rect.top + rect.height / 2;
+        var maxDist = viewportCenter + rect.height / 2;
+        var proximity = 1 - Math.min(Math.abs(elCenter - viewportCenter) / maxDist, 1);
+        ph.style.setProperty('--gs', (0.6 * (1 - proximity)).toFixed(3));
+        ph.style.setProperty('--br', (0.85 + 0.15 * proximity).toFixed(3));
       });
-    }, { threshold: 0.35 });
-    chipEls.forEach(function(el){ chipIo.observe(el); });
+      chipTicking = false;
+    }
+    function onChipScroll(){
+      if (!chipTicking) { chipTicking = true; requestAnimationFrame(updateChipProximity); }
+    }
+    window.addEventListener('scroll', onChipScroll, { passive: true });
+    window.addEventListener('resize', onChipScroll);
+    updateChipProximity();
   }
 
   var accs = document.querySelectorAll('details.acc');
