@@ -463,6 +463,8 @@
   .rail{display:none!important;}
   .slides-col{flex:0 0 48%;padding-left:clamp(24px,6vw,88px);}
   #hero .img-col{width:52%;padding:20px clamp(24px,4vw,56px) 20px 0;}
+  .hero-details .img-col{width:52%;padding:20px clamp(24px,4vw,56px) 20px 0;}
+  .hero-details .slides-col>.slide:first-child{min-height:44vh;padding-top:48px;}
   .img-stack{top:90px;height:calc(100vh - 110px);border-radius:3px;overflow:hidden;}
   .img-stack .simg{filter:none;}
   .img-stack .simg.active{filter:none;}
@@ -544,7 +546,9 @@
     .split-wrap{display:block;}
     .slides-col{padding-left:24px;}
     #hero .img-col{display:none;}
+    .hero-details .img-col{display:none;}
     .slides-col>.slide:first-child{min-height:auto;padding:28px 48px 50px 0;}
+    .hero-details .slides-col>.slide:first-child{min-height:auto;padding:34px 48px 38px 0;}
     .slide{min-height:auto;padding:34px 48px 38px 0;}
     .slides-col>.slide:not(:first-child) .hero-mobile-photo{display:none;}
     .slide h2{font-size:clamp(40px,8vw,66px);}
@@ -567,6 +571,7 @@
     .book-tab:hover{padding:13px 18px;}
     .slides-col{padding-left:18px;}
     .slides-col>.slide:first-child{padding:22px 18px 38px 0;}
+    .hero-details .slides-col>.slide:first-child{padding:30px 18px 34px 0;}
     .slide{padding:30px 18px 34px 0;}
     .hero-mobile-photo{aspect-ratio:1.12;margin-bottom:24px;}
     .slide h2{font-size:clamp(38px,11vw,54px);}
@@ -675,7 +680,7 @@
       <a href="#contact" class="link-arrow">Забронировать выступление <svg viewBox="0 0 20 9" fill="none"><path stroke="currentColor" stroke-width="1.5" d="M0 4.5h18M13 0l5 4.5-5 4.5"/></svg></a>
     </div>
 
-    <div class="slide" data-idx="02">
+    <div class="slide" id="about" data-idx="02">
       <span class="idx-dots" aria-label="Страница 2 из 5">
         <span class="dot"></span>
         <span class="dot active"></span>
@@ -692,8 +697,8 @@
         <div class="adjust-toolbar"><button type="button" class="adjust-zoom-out" title="Уменьшить">−</button><button type="button" class="adjust-zoom-in" title="Увеличить">+</button><button type="button" class="adjust-done-btn" title="Готово">Готово</button></div>
       </div>
       <h2>О коллективе</h2>
-      <p>Бэнд, собранный музыкантом Тимофеем Убогих. Все участники — лауреаты международных конкурсов, играем в разных стилях: от барокко до кино-саундтреков и современных хитов.</p>
-      <a href="#about" class="link-arrow">Читать о бэнде <svg viewBox="0 0 20 9" fill="none"><path stroke="currentColor" stroke-width="1.5" d="M0 4.5h18M13 0l5 4.5-5 4.5"/></svg></a>
+      <p>CoraLab — музыкальный бэнд, собранный Тимофеем Убогих из артистов, которым близка одна идея: классическая инструментальная музыка может звучать современно и живо в любом пространстве.</p>
+      <a href="#members" class="link-arrow">Познакомиться с составом <svg viewBox="0 0 20 9" fill="none"><path stroke="currentColor" stroke-width="1.5" d="M0 4.5h18M13 0l5 4.5-5 4.5"/></svg></a>
     </div>
 
     <div class="slide" data-idx="03">
@@ -713,7 +718,7 @@
         <div class="adjust-toolbar"><button type="button" class="adjust-zoom-out" title="Уменьшить">−</button><button type="button" class="adjust-zoom-in" title="Увеличить">+</button><button type="button" class="adjust-done-btn" title="Готово">Готово</button></div>
       </div>
       <h2>Состав коллектива</h2>
-      <p>Разные инструменты и голоса, один общий звук. У каждого музыканта — собственный сольный и ансамблевый опыт.</p>
+      <p>Разные инструменты и голоса, один общий звук. Все участники коллектива — лауреаты международных конкурсов, у каждого свой сольный и ансамблевый опыт.</p>
       <a href="#members" class="link-arrow">Смотреть состав <svg viewBox="0 0 20 9" fill="none"><path stroke="currentColor" stroke-width="1.5" d="M0 4.5h18M13 0l5 4.5-5 4.5"/></svg></a>
     </div>
 
@@ -734,7 +739,7 @@
         <div class="adjust-toolbar"><button type="button" class="adjust-zoom-out" title="Уменьшить">−</button><button type="button" class="adjust-zoom-in" title="Увеличить">+</button><button type="button" class="adjust-done-btn" title="Готово">Готово</button></div>
       </div>
       <h2>Форматы мероприятий</h2>
-      <p>Свадьбы, корпоративы, дни рождения, презентации, фестивали — подбираем программу под формат и настроение вашего события.</p>
+      <p>Свадьбы, вечеринки, презентации, дни рождения, конференции и фестивали. Подбираем программу и состав, чтобы создать нужное настроение события.</p>
       <a href="#events" class="link-arrow">Смотреть форматы <svg viewBox="0 0 20 9" fill="none"><path stroke="currentColor" stroke-width="1.5" d="M0 4.5h18M13 0l5 4.5-5 4.5"/></svg></a>
     </div>
 
@@ -755,7 +760,7 @@
         <div class="adjust-toolbar"><button type="button" class="adjust-zoom-out" title="Уменьшить">−</button><button type="button" class="adjust-zoom-in" title="Увеличить">+</button><button type="button" class="adjust-done-btn" title="Готово">Готово</button></div>
       </div>
       <h2>Программа и репертуар</h2>
-      <p>Более 200 произведений в девяти разделах — от новогодней классики до поп-хитов и джаза. Список постоянно пополняется под ваши пожелания.</p>
+      <p>Более 200 произведений в девяти разделах: от барокко и романтизма до кино-саундтреков, джаза и современных хитов. Подберём программу под ваши пожелания.</p>
       <a href="#program" class="link-arrow">Смотреть программу <svg viewBox="0 0 20 9" fill="none"><path stroke="currentColor" stroke-width="1.5" d="M0 4.5h18M13 0l5 4.5-5 4.5"/></svg></a>
     </div>
   </div>
@@ -1059,7 +1064,29 @@
 </section>
 
 <script>
-  document.getElementById('members').before(document.getElementById('media'));
+  (function(){
+    var hero = document.getElementById('hero');
+    var media = document.getElementById('media');
+    var members = document.getElementById('members');
+    if (!hero || !media || !members) return;
+
+    var heroSlides = hero.querySelector('.slides-col');
+    var heroImages = hero.querySelector('.img-stack');
+    var slides = Array.prototype.slice.call(heroSlides.querySelectorAll('.slide'));
+    var details = document.createElement('div');
+    details.id = 'hero-details';
+    details.className = 'split-wrap hero-details';
+    details.innerHTML = '<div class="rail"><div class="line" id="detailsRailLine"></div></div><div class="slides-col"></div><div class="img-col"><div class="img-stack"></div></div>';
+
+    slides.slice(1).forEach(function(slide){ details.querySelector('.slides-col').appendChild(slide); });
+    Array.prototype.slice.call(heroImages.querySelectorAll('.simg')).forEach(function(image){
+      if (image.getAttribute('data-img') !== '01') details.querySelector('.img-stack').appendChild(image);
+    });
+
+    hero.after(media);
+    media.after(details);
+    if (members.previousElementSibling !== details) members.before(details);
+  })();
 </script>
 
 <!-- QUICK NAV: repertoire / event formats / media, boroda.com-style hover columns -->
@@ -1096,6 +1123,7 @@
         <li>Презентации</li>
         <li>Фестивали</li>
         <li>Вечеринки</li>
+        <li>Конференции</li>
       </ul>
       <span class="qn-link">Смотреть форматы <svg viewBox="0 0 20 9" fill="none"><path stroke="currentColor" stroke-width="1.5" d="M0 4.5h18M13 0l5 4.5-5 4.5"/></svg></span>
     </a>
@@ -1124,39 +1152,6 @@
     <img src="img/logo-full.png" alt="CoraLab — музыкальный коллектив" width="230" height="292" loading="lazy">
     <p>Живой звук для вашего события</p>
     <span class="lb-line" aria-hidden="true"></span>
-  </div>
-</section>
-
-<!-- ABOUT -->
-<section id="about">
-  <div class="wrap">
-    <div class="reveal">
-      <span class="eyebrow">Наш стиль</span>
-      <h3 style="font-size:clamp(22px,2.6vw,30px);line-height:1.15;margin:14px 0 22px;">Современный почерк на классических инструментах</h3>
-      <div style="max-width:820px;">
-        <p style="color:var(--muted);font-size:17px;line-height:1.65;margin:0 0 20px;">Уникальный стиль CoraLab — это современные ритмы и авторские обработки классических и мировых произведений. Яркая подача погружает слушателей в эмоциональную эйфорию и раскрывает всю красоту музыки.</p>
-        <p style="color:var(--muted);font-size:17px;line-height:1.65;margin:0;">За годы работы мы популяризировали струнные инструменты, сделали классику современной и нашли собственное, узнаваемое звучание. Мы не просто исполняем музыку — мы превращаем каждое выступление в зрелищное и эмоциональное событие. Постоянные партнёры и заказчики ценят нас за то, что мы искренне вкладываемся в свою работу.</p>
-      </div>
-    </div>
-
-    <div class="reveal" style="margin-top:56px;padding-top:44px;border-top:1px solid var(--line);">
-      <div class="section-head"><span class="eyebrow">О коллективе</span><h2>Музыка, которая создаёт атмосферу</h2></div>
-      <div class="about-grid">
-        <div>
-          <p><b class="brand-name" style="color:var(--text);">CoraLab</b> — музыкальный бэнд, собранный музыкантом Тимофеем Убогих из артистов, разделяющих одну идею: классическая инструментальная музыка звучит современно и живо в любом пространстве.</p>
-          <p>Все участники коллектива — <b>лауреаты международных конкурсов</b>. Мы играем в разных стилях — от барокко и романтизма до кино-саундтреков, джаза и современных хитов.</p>
-          <p>Мы не только исполняем музыку, но и выстраиваем настроение мероприятия: подбираем программу под формат события — свадьбу, вечеринку, презентацию, день рождения, конференцию или фестиваль.</p>
-        </div>
-        <div>
-          <div class="stat-list">
-            <div><b>4+</b><span>Музыкантов на сцене, состав растёт</span></div>
-            <div><b>100%</b><span>Индивидуальный подбор программы под событие</span></div>
-            <div><b>Live</b><span>Живое исполнение — акустически и под фонограмму</span></div>
-            <div><b>9+</b><span>Стилей и жанров в репертуаре</span></div>
-          </div>
-        </div>
-      </div>
-    </div>
   </div>
 </section>
 
@@ -1614,20 +1609,44 @@
   });
 
   // split-scroll sync: progress line + right-panel image swap
-  var slides = Array.prototype.slice.call(document.querySelectorAll('#hero .slide'));
+  var slides = Array.prototype.slice.call(document.querySelectorAll('#hero .slide, #hero-details .slide'));
+  var heroSlides = Array.prototype.slice.call(document.querySelectorAll('#hero .slide'));
+  var detailSlides = Array.prototype.slice.call(document.querySelectorAll('#hero-details .slide'));
   var simgs = Array.prototype.slice.call(document.querySelectorAll('.simg'));
   var railLine = document.getElementById('railLine');
+  var detailsRailLine = document.getElementById('detailsRailLine');
   var total = slides.length;
-  var slideIO = new IntersectionObserver(function(entries){
-    entries.forEach(function(entry){
-      if (entry.isIntersecting){
-        var idx = entry.target.getAttribute('data-idx');
-        railLine.style.setProperty('--prog', (parseInt(idx,10)/total*100) + '%');
-        simgs.forEach(function(s){ s.classList.toggle('active', s.getAttribute('data-img') === idx); });
-      }
+  var slideSyncPending = false;
+  function syncActiveHeroSlide(){
+    if (slideSyncPending) return;
+    slideSyncPending = true;
+    requestAnimationFrame(function(){
+      slideSyncPending = false;
+      var viewportCenter = window.innerHeight / 2;
+      var activeSlide = null;
+      var nearestDistance = Infinity;
+      slides.forEach(function(slide){
+        var rect = slide.getBoundingClientRect();
+        if (rect.bottom <= 0 || rect.top >= window.innerHeight) return;
+        var distance = Math.abs(rect.top + rect.height / 2 - viewportCenter);
+        if (distance < nearestDistance) {
+          nearestDistance = distance;
+          activeSlide = slide;
+        }
+      });
+      if (!activeSlide) return;
+      var idx = activeSlide.getAttribute('data-idx');
+      var activeRailLine = activeSlide.closest('#hero-details') ? detailsRailLine : railLine;
+      if (activeRailLine) activeRailLine.style.setProperty('--prog', (parseInt(idx,10)/total*100) + '%');
+      simgs.forEach(function(s){ s.classList.toggle('active', s.getAttribute('data-img') === idx); });
     });
+  }
+  var slideIO = new IntersectionObserver(function(entries){
+    if (entries.some(function(entry){ return entry.isIntersecting; })) syncActiveHeroSlide();
   }, { threshold: 0.55 });
   slides.forEach(function(s){ slideIO.observe(s); });
+  window.addEventListener('scroll', syncActiveHeroSlide, { passive: true });
+  syncActiveHeroSlide();
 
   // members split-scroll sync: progress line + sticky portrait swap ("fold" transition via CSS)
   var memberSlides = Array.prototype.slice.call(document.querySelectorAll('.member-slide'));
@@ -1790,7 +1809,8 @@
     }, { passive: false });
   }
 
-  createWheelStepper(document.getElementById('hero'), slides);
+  createWheelStepper(document.getElementById('hero'), heroSlides);
+  createWheelStepper(document.getElementById('hero-details'), detailSlides);
   createWheelStepper(document.querySelector('.member-split'), memberSlides);
 
   // ---------- UNIFIED TOP-LEVEL SECTION STEPPER: one small wheel tick, one smooth move — everywhere ----------
@@ -1805,11 +1825,12 @@
   // is already true).
   (function(){
     var zones = Array.prototype.slice.call(
-      document.querySelectorAll('#hero, .qn-section, #about, #why, #members, #media, #contact')
+      document.querySelectorAll('#hero, #media, #hero-details, .qn-section, #why, #members, #contact')
     );
     if (zones.length < 2) return;
 
     var heroWrap = document.getElementById('hero');
+    var heroDetailsWrap = document.getElementById('hero-details');
     var memberWrap = document.getElementById('members');
     var MARGIN = 24;         // tolerance for "already at this section's edge"
     var LOCK_MS = TWEEN_MS + 60;
@@ -1836,8 +1857,11 @@
     // Hero/Members are quantised into sub-slides by their own steppers, so handing into/out of them
     // targets the exact first/last slide position rather than the raw section edge.
     function entryTarget(zoneEl, fromAbove){
-      if (zoneEl === heroWrap && slides.length){
-        return absTop(fromAbove ? slides[0] : slides[slides.length - 1]);
+      if (zoneEl === heroWrap && heroSlides.length){
+        return absTop(fromAbove ? heroSlides[0] : heroSlides[heroSlides.length - 1]);
+      }
+      if (zoneEl === heroDetailsWrap && detailSlides.length){
+        return absTop(fromAbove ? detailSlides[0] : detailSlides[detailSlides.length - 1]);
       }
       if (zoneEl === memberWrap && memberSlides.length){
         return absTop(fromAbove ? memberSlides[0] : memberSlides[memberSlides.length - 1]);
