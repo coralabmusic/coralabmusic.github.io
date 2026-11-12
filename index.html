@@ -5,16 +5,17 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>CoraLab — бэнд</title>
 <meta name="description" content="CoraLab — бэнд для свадеб, корпоративов, презентаций и любых событий. Классика, кино, джаз, поп — живая музыка в высоком исполнении.">
+<meta name="theme-color" content="#f3f0e9">
 <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32.png">
 <link rel="icon" type="image/png" sizes="512x512" href="img/favicon-512.png">
 <link rel="apple-touch-icon" sizes="180x180" href="img/favicon-180.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-<link rel="preconnect" href="https://api.fontshare.com">
-<link href="https://api.fontshare.com/v2/css?f[]=monument-extended@400,500,600,700,800,900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-  :root{
+  :root {
+    --main-color: #000000;
+    --accent-color: #ffffff;
     --bg:#242320;
     --bg-alt:#2b2a26;
     --card:#2e2d29;
@@ -28,7 +29,7 @@
   }
   *,*::before,*::after{box-sizing:border-box;}
   html{scroll-behavior:auto;}
-  body{margin:0;background:var(--bg);color:var(--text);font-family:'Archivo',Helvetica,Arial,sans-serif;font-weight:400;line-height:1.55;-webkit-font-smoothing:antialiased;}
+  body{margin:0;background:var(--accent-color);color:var(--main-color);font-family:'Playfair Display', serif;font-weight:400;line-height:1.55;-webkit-font-smoothing:antialiased;}
   a{color:inherit;text-decoration:none;}
   img{max-width:100%;display:block;}
   ul{margin:0;padding:0;list-style:none;}
@@ -50,6 +51,7 @@
   .nav{max-width:1360px;margin:0 auto;padding:14px 44px;display:flex;align-items:center;justify-content:space-between;}
   .brand{display:flex;align-items:center;gap:12px;}
   .brand-mark{width:60px;height:60px;display:flex;align-items:center;justify-content:center;flex:none;}
+  .brand-mark img{filter: grayscale(100%);}
   .brand-mark img{width:100%;height:100%;object-fit:contain;display:block;}
   .brand-text{line-height:1.2;}
   .brand-name{font-family:'Monument Extended',Archivo,sans-serif;font-weight:900;letter-spacing:-.01em;color:var(--gold);}
@@ -407,6 +409,182 @@
   .export-positions-btn svg{width:16px;height:16px;flex:none;}
   @media(max-width:640px){
     .export-positions-btn{left:14px;bottom:14px;padding:10px 14px;font-size:12.5px;}
+  }
+
+  :root{
+    --main-color:#1d1b19;
+    --accent-color:#f3f0e9;
+    --bg:#f3f0e9;
+    --bg-alt:#e9e4da;
+    --card:#e5dfd4;
+    --text:#1d1b19;
+    --muted:#625e57;
+    --faint:#837c70;
+    --line:rgba(29,27,25,.15);
+    --gold:#a45f3d;
+    --gold-deep:#82482f;
+    --ink:#1d1b19;
+  }
+  html{scroll-behavior:auto;scroll-padding-top:100px;}
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:'Manrope',sans-serif;
+    font-weight:400;
+    line-height:1.65;
+  }
+  h1,h2,h3,h4{font-family:'Playfair Display',serif;font-weight:500;letter-spacing:-.025em;}
+  .wrap{max-width:1440px;padding-left:clamp(24px,6vw,88px);padding-right:clamp(24px,6vw,88px);}
+  section{padding:clamp(78px,10vw,144px) 0;border-color:var(--line);}
+  .section-head{max-width:720px;margin-bottom:clamp(34px,5vw,68px);}
+  .section-head h2{font-size:clamp(38px,5.4vw,70px);line-height:1.03;}
+  .section-head p{max-width:600px;color:var(--muted);font-size:16px;line-height:1.8;}
+  .eyebrow{font:500 10px/1.5 'DM Mono',monospace;letter-spacing:.16em;color:var(--gold);}
+  .link-arrow{font-size:13px;font-weight:700;color:var(--gold-deep);}
+
+  header{background:rgba(243,240,233,.94);border-color:var(--line);backdrop-filter:blur(16px);}
+  .nav{max-width:1440px;padding:10px clamp(24px,6vw,88px);}
+  .brand{gap:10px;}
+  .brand-mark{width:50px;height:50px;}
+  .brand-mark img{filter:none;opacity:.86;}
+  .brand-text b{font:600 16px/1.2 'Manrope',sans-serif;letter-spacing:.07em;color:var(--text)!important;}
+  .nav-links{gap:clamp(14px,2vw,28px);}
+  .nav-links a{font-size:11px;font-weight:600;color:var(--muted);}
+  .nav-links a:hover,.nav-phone:hover{color:var(--gold);}
+  .nav-phone{font-size:12px;color:var(--text);}
+  .nav-social a{color:var(--muted);border-color:var(--line);}
+  .burger span{background:var(--text);}
+  .mobile-menu{inset:70px 0 0;background:var(--bg);padding:36px 28px;}
+  .mobile-menu a{font-family:'Playfair Display',serif;font-size:27px;font-weight:500;color:var(--text);}
+  .book-tab{top:auto;bottom:28px;right:clamp(16px,3vw,42px);transform:none;writing-mode:horizontal-tb;border-radius:2px;padding:15px 20px;background:var(--ink);color:var(--bg);font:500 10px/1 'DM Mono',monospace;letter-spacing:.12em;}
+  .book-tab:hover{padding:15px 24px;background:var(--gold);}
+
+  .split-wrap{padding-top:70px;background:var(--bg);}
+  .rail{display:none!important;}
+  .slides-col{flex:0 0 48%;padding-left:clamp(24px,6vw,88px);}
+  #hero .img-col{width:52%;padding:20px clamp(24px,4vw,56px) 20px 0;}
+  .img-stack{top:90px;height:calc(100vh - 110px);border-radius:3px;overflow:hidden;}
+  .img-stack .simg{filter:none;}
+  .img-stack .simg.active{filter:none;}
+  .img-stack .simg-photo{transform:scale(var(--pzoom,1));}
+  .img-stack::after{background:linear-gradient(0deg,rgba(16,15,14,.32),transparent 38%);}
+  .slide{min-height:44vh;padding:48px clamp(24px,5vw,76px) 48px 0;border-color:var(--line);}
+  .slides-col>.slide:first-child{min-height:calc(100vh - 70px);padding-top:64px;}
+  .idx-dots{gap:8px;margin-bottom:28px;}
+  .idx-dots .dot{width:5px;height:5px;background:rgba(29,27,25,.24);}
+  .idx-dots .dot.active{width:24px;background:var(--gold);}
+  .slide h2{font:500 clamp(42px,5.5vw,76px)/1.01 'Playfair Display',serif;letter-spacing:-.045em;max-width:620px;margin-bottom:24px;}
+  .slide h2 .brand-name{color:var(--gold);font:inherit;}
+  .slide p{color:var(--muted);font-size:15px;line-height:1.8;max-width:440px;margin-bottom:30px;}
+  .hero-mobile-photo{border-radius:2px;margin-bottom:24px;}
+
+  .qn-section{background:var(--ink);border:0;}
+  .qn-grid{max-width:1440px;margin:0 auto;padding:0 clamp(24px,6vw,88px);gap:1px;background:var(--line);}
+  .qn-col{min-height:390px;padding:clamp(30px,4vw,54px);background:#24221f;border:0;}
+  .qn-col:hover{background:#302722;}
+  .qn-decor{color:transparent;-webkit-text-stroke:1px rgba(243,240,233,.12);font:500 66px 'Playfair Display',serif;}
+  .qn-title{color:#d39a78;font:500 clamp(25px,3vw,38px)/1.12 'Playfair Display',serif;}
+  .qn-text{opacity:1;color:#c5beb4;font-size:13px;line-height:1.75;}
+  .qn-list li{color:#c5beb4;font:400 10px/1.6 'DM Mono',monospace;letter-spacing:.06em;}
+  .qn-link{color:#d39a78;font-size:12px;}
+  .qn-col:hover .qn-title,.qn-col:hover .qn-link{color:#f3f0e9;}
+  .qn-col:hover .qn-text,.qn-col:hover .qn-list li{color:#f3f0e9;}
+
+  .about-grid{gap:clamp(36px,8vw,112px);}
+  .about-grid p{color:var(--muted);font-size:15px;line-height:1.85;}
+  .about-grid p b{color:var(--text);}
+  .stat-list b{font:500 30px 'Playfair Display',serif;color:var(--gold);}
+  .stat-list span{font-size:12px;color:var(--muted);}
+  .member-split{background:var(--bg-alt);}
+  .member-slides-col .slide{min-height:70vh;}
+  .member-thumb{width:min(360px,34vw);height:min(360px,34vw);border-radius:50%;border:0;}
+  .member-thumb .ph{filter:grayscale(.15) brightness(.95);}
+  .member-slide-name h3{font:500 clamp(26px,3vw,38px)/1.1 'Playfair Display',serif;}
+  .member-slide-role,.member-slide-badge{font-size:12px;color:var(--muted);}
+  .member-img-stack{top:90px;height:calc(100vh - 110px);border-radius:2px;}
+  .member-img-stack .msimg,.member-img-stack .msimg.active{filter:none;}
+  .member-img-stack .msname{left:clamp(20px,4vw,48px);bottom:clamp(20px,4vw,48px);}
+  .member-img-stack .msname .n{color:#e0ad8e;}
+  .member-img-stack .msname h4{font:500 28px 'Playfair Display',serif;}
+  .media-grid{gap:10px;background:transparent;}
+  .media-tile{background:var(--card);aspect-ratio:1.15;}
+  .media-photo{filter:grayscale(.08) brightness(.88);}
+  .media-tile:hover .media-photo{filter:grayscale(0) brightness(.98);}
+  .media-tile .tag{font:400 9px 'DM Mono',monospace;letter-spacing:.1em;}
+  .media-tile span.lbl{font-size:12px;font-weight:600;}
+  .media-tile .tag,.media-tile .lbl{display:none;}
+  .media-tile .play{border-color:#e0ad8e;}
+  .media-tile .play svg{color:#e0ad8e;}
+  .format-card{background:var(--bg-alt);border:0;}
+  .format-card h3,.event-row h3{font:500 clamp(22px,2.7vw,34px)/1.2 'Playfair Display',serif;}
+  .event-row{padding:28px 20px;}
+  .event-row:hover{background:var(--bg-alt);padding-left:28px;}
+  .event-row p{color:var(--muted);font-size:13px;}
+  .event-row:hover p,.event-row:hover .e-idx{color:var(--text);}
+  .e-idx{font:500 12px 'DM Mono',monospace;}
+  .content-modal{background:var(--bg);}
+  .content-modal-close{background:var(--ink);color:var(--bg);border:0;}
+  .brand-signoff{background:var(--ink);color:var(--bg);}
+  .brand-signoff h2,.brand-signoff p{color:var(--bg);}
+  footer{background:var(--ink);color:#c5beb4;border-color:rgba(243,240,233,.16);}
+  .lightbox{background:rgba(18,17,16,.96);}
+
+  @media(max-width:1100px){
+    .nav-links,.nav-phone,.nav-social{display:none;}
+    .burger{display:flex;}
+    .split-wrap{padding-top:70px;}
+    .slides-col{flex-basis:50%;}
+    #hero .img-col{width:50%;}
+    .slide h2{font-size:clamp(42px,6vw,68px);}
+    .member-thumb{width:min(320px,34vw);height:min(320px,34vw);}
+    .member-slides-col .slide{min-height:64vh;}
+  }
+  @media(max-width:900px){
+    .wrap{padding-left:24px;padding-right:24px;}
+    .split-wrap{display:block;}
+    .slides-col{padding-left:24px;}
+    #hero .img-col{display:none;}
+    .slides-col>.slide:first-child{min-height:auto;padding:28px 48px 50px 0;}
+    .slide{min-height:auto;padding:34px 48px 38px 0;}
+    .slides-col>.slide:not(:first-child) .hero-mobile-photo{display:none;}
+    .slide h2{font-size:clamp(40px,8vw,66px);}
+    .member-split{display:block;}
+    .member-split .img-col{display:none;}
+    .member-slides-col .slide{min-height:auto;padding:42px 24px 42px 0;}
+    .member-thumb{width:min(320px,72vw);height:min(320px,72vw);}
+    .member-split .member-slides-col{padding-left:24px;}
+    .qn-grid{padding:0 24px;grid-template-columns:1fr;}
+    .qn-col{min-height:auto;padding:34px 28px;}
+    .qn-list{margin-bottom:20px;}
+    .about-grid{grid-template-columns:1fr;gap:28px;}
+    .section-head h2{font-size:clamp(38px,8vw,58px);}
+  }
+  @media(max-width:560px){
+    .nav{padding:8px 18px;}
+    .brand-mark{width:44px;height:44px;}
+    .brand-text b{font-size:14px;}
+    .book-tab{bottom:16px;right:16px;padding:13px 15px;font-size:9px;}
+    .book-tab:hover{padding:13px 18px;}
+    .slides-col{padding-left:18px;}
+    .slides-col>.slide:first-child{padding:22px 18px 38px 0;}
+    .slide{padding:30px 18px 34px 0;}
+    .hero-mobile-photo{aspect-ratio:1.12;margin-bottom:24px;}
+    .slide h2{font-size:clamp(38px,11vw,54px);}
+    .slide p{font-size:14px;}
+    .idx-dots{margin-bottom:18px;}
+    section{padding:76px 0;}
+    .section-head{margin-bottom:34px;}
+    .section-head p{font-size:14px;}
+    .media-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:7px;}
+    .media-tile{aspect-ratio:.86;}
+    .media-tile .tag{top:10px;left:10px;font-size:8px;}
+    .media-tile span.lbl{left:10px;right:10px;bottom:10px;font-size:10px;}
+    .format-cards{grid-template-columns:1fr;}
+    .event-row{align-items:flex-start;gap:14px;padding:22px 8px;flex-wrap:wrap;}
+    .event-row h3{flex:1 1 calc(100% - 50px);}
+    .event-row p{flex:1 1 100%;padding-left:48px;}
+    .stat-list div{flex-direction:column;align-items:flex-start;gap:6px;}
+    .stat-list span{text-align:left;max-width:100%;}
   }
 </style>
 </head>
@@ -802,7 +980,7 @@
 <!-- MEDIA -->
 <section id="media">
   <div class="wrap">
-    <div class="section-head reveal"><span class="eyebrow">Медиа</span><h2>Фото и видео бэнда</h2><p>Здесь появятся фотографии и видео с ваших мероприятий и концертов. Пока — места под них, готовые принять первые кадры.</p></div>
+    <div class="section-head reveal"><span class="eyebrow">Медиа</span><h2>Фото и видео бэнда</h2><p>Фотографии коллектива, репетиций и выступлений, а также видео с мероприятий и из-за кулис.</p></div>
     <div class="media-grid reveal">
       <div class="media-tile" data-slot="01" data-kind="photo" data-aspect="1.5">
         <div class="media-photo" data-fallback="img/photos/media-01.jpg" style="background-image:url('img/photos/media-01.jpg')"></div>
@@ -872,6 +1050,10 @@
     <p class="media-hint">Нажмите на значок ⬆ в углу любой плитки, чтобы загрузить своё фото или видео с этого устройства — оно тут же появится на сайте и сохранится в этом браузере. Значок ✕ возвращает временную заглушку. У загруженных фото появляется значок ⊹ — им можно перетащить фото и приблизить/отдалить кнопками, чтобы точно вписать нужный кадр в рамку.</p>
   </div>
 </section>
+
+<script>
+  document.getElementById('members').before(document.getElementById('media'));
+</script>
 
 <!-- QUICK NAV: repertoire / event formats / media, boroda.com-style hover columns -->
 <section class="qn-section">
