@@ -1087,6 +1087,15 @@
         <label class="media-upload-btn" title="Загрузить своё видео"><input type="file" accept="video/*" class="media-input" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 16V4M12 4l-4 4M12 4l4 4"/><path d="M4 15v3a1 1 0 001 1h14a1 1 0 001-1v-3"/></svg></label>
         <button type="button" class="media-reset-btn" title="Вернуть заглушку">✕</button>
       </div>
+      <div class="media-tile" data-slot="10" data-kind="photo">
+        <div class="media-photo" data-fallback="img/photos/quartet-estate.png" style="background-image:url('img/photos/quartet-estate.png')"></div>
+        <div class="media-scrim"></div>
+        <span class="tag">Фото — 10 <span class="status">· фото коллектива</span></span><span class="lbl">Музыкальный квартет у усадьбы</span>
+        <label class="media-upload-btn" title="Загрузить своё фото"><input type="file" accept="image/*" class="media-input" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 16V4M12 4l-4 4M12 4l4 4"/><path d="M4 15v3a1 1 0 001 1h14a1 1 0 001-1v-3"/></svg></label>
+        <button type="button" class="media-reset-btn" title="Вернуть заглушку">✕</button>
+        <button type="button" class="adjust-toggle-btn" title="Настроить положение и масштаб фото"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="5 9 2 12 5 15"/><polyline points="9 5 12 2 15 5"/><polyline points="15 19 12 22 9 19"/><polyline points="19 9 22 12 19 15"/><line x1="2" y1="12" x2="22" y2="12"/><line x1="12" y1="2" x2="12" y2="22"/></svg></button>
+        <div class="adjust-toolbar"><button type="button" class="adjust-zoom-out" title="Уменьшить">−</button><button type="button" class="adjust-zoom-in" title="Увеличить">+</button><button type="button" class="adjust-done-btn" title="Готово">Готово</button></div>
+      </div>
     </div>
     <p class="media-hint">Нажмите на значок ⬆ в углу любой плитки, чтобы загрузить своё фото или видео с этого устройства — оно тут же появится на сайте и сохранится в этом браузере. Значок ✕ возвращает временную заглушку. У загруженных фото появляется значок ⊹ — им можно перетащить фото и приблизить/отдалить кнопками, чтобы точно вписать нужный кадр в рамку.</p>
   </div>
@@ -2237,19 +2246,20 @@
         var v = document.createElement('video');
         var objectUrl = source instanceof Blob ? URL.createObjectURL(source) : source;
         v.src = objectUrl;
-        v.muted = true; v.playsInline = true; v.preload = 'metadata';
+        v.muted = true; v.playsInline = true; v.preload = 'auto';
+        var captured = false;
+        var seekTimer = 0;
         function releaseObjectUrl(){
+          window.clearTimeout(seekTimer);
           if (source instanceof Blob) URL.revokeObjectURL(objectUrl);
+          v.removeAttribute('src');
+          v.load();
         }
-        v.addEventListener('loadedmetadata', function(){
-          if (version === posterVersion) setTileAspect(v.videoWidth, v.videoHeight);
-        }, { once: true });
-        v.addEventListener('loadeddata', function(){
-          v.currentTime = Math.min(1.5, (v.duration || 3) / 2);
-        });
-        v.addEventListener('seeked', function(){
+        function captureFrame(){
+          if (captured || !v.videoWidth || !v.videoHeight) return;
+          captured = true;
           var canvas = document.createElement('canvas');
-          canvas.width = v.videoWidth || 640; canvas.height = v.videoHeight || 360;
+          canvas.width = v.videoWidth; canvas.height = v.videoHeight;
           var ctx = canvas.getContext('2d');
           try {
             ctx.drawImage(v, 0, 0, canvas.width, canvas.height);
@@ -2257,8 +2267,18 @@
               photoEl.style.backgroundImage = "url('" + canvas.toDataURL('image/jpeg', 0.72) + "')";
               setTileAspect(canvas.width, canvas.height);
             }
-          } catch(e) { console.warn('Не удалось создать обложку из кадра видео.', e); }
+          } catch(e) { console.error('Не удалось создать обложку из кадра видео.', e); }
           releaseObjectUrl();
+        }
+        v.addEventListener('loadedmetadata', function(){
+          if (version !== posterVersion) { releaseObjectUrl(); return; }
+          setTileAspect(v.videoWidth, v.videoHeight);
+          var targetTime = Math.min(5, Math.max(1, v.duration * 0.35));
+          v.addEventListener('seeked', captureFrame, { once: true });
+          seekTimer = window.setTimeout(function(){
+            if (!captured) console.error('Не удалось получить кадр из видео для обложки:', objectUrl);
+          }, 8000);
+          v.currentTime = Math.min(targetTime, Math.max(0, v.duration - 0.1));
         }, { once: true });
         v.addEventListener('error', function(){
           releaseObjectUrl();
