@@ -110,6 +110,7 @@
     .rail{display:flex;}
     .img-col{display:block;}
     .hero-mobile-photo{display:none;}
+    .img-stack .simg-photo{background-size:contain;background-repeat:no-repeat;background-color:var(--accent-color);}
   }
 
   /* ---------- QUICK NAV (boroda.com-style hover columns) ---------- */
@@ -1038,7 +1039,7 @@
         <div class="adjust-toolbar"><button type="button" class="adjust-zoom-out" title="Уменьшить">−</button><button type="button" class="adjust-zoom-in" title="Увеличить">+</button><button type="button" class="adjust-done-btn" title="Готово">Готово</button></div>
       </div>
       <div class="media-tile" data-slot="07" data-kind="photo" data-aspect="1.5">
-        <div class="media-photo" data-fallback="img/photos/media-07.jpg" style="background-image:url('img/photos/media-07.jpg')"></div>
+        <div class="media-photo" data-fallback="img/photos/%D0%9A%D0%B2%D0%B0%D1%80%D1%82%D0%B5%D1%82%20%D0%B2%20%D1%81%D0%B0%D0%B4%D1%83%20%D1%83%20%D0%BE%D1%81%D0%BE%D0%B1%D0%BD%D1%8F%D0%BA%D0%B0.png" style="background-image:url('img/photos/%D0%9A%D0%B2%D0%B0%D1%80%D1%82%D0%B5%D1%82%20%D0%B2%20%D1%81%D0%B0%D0%B4%D1%83%20%D1%83%20%D0%BE%D1%81%D0%BE%D0%B1%D0%BD%D1%8F%D0%BA%D0%B0.png')"></div>
         <div class="media-scrim"></div>
         <span class="tag">Фото — 07 <span class="status">· фото коллектива</span></span><span class="lbl">Квартет в саду у особняка</span>
         <label class="media-upload-btn" title="Загрузить своё фото"><input type="file" accept="image/*" class="media-input" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 16V4M12 4l-4 4M12 4l4 4"/><path d="M4 15v3a1 1 0 001 1h14a1 1 0 001-1v-3"/></svg></label>
@@ -1053,8 +1054,8 @@
         <label class="media-upload-btn" title="Загрузить своё видео"><input type="file" accept="video/*" class="media-input" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 16V4M12 4l-4 4M12 4l4 4"/><path d="M4 15v3a1 1 0 001 1h14a1 1 0 001-1v-3"/></svg></label>
         <button type="button" class="media-reset-btn" title="Вернуть заглушку">✕</button>
       </div>
-      <div class="media-tile" data-slot="09" data-kind="video" data-fallback-video="img/video/libertango.mp4">
-        <div class="media-photo" data-fallback="img/photos/libertango-poster.jpg" style="background-image:url('img/photos/libertango-poster.jpg')"></div>
+      <div class="media-tile" data-slot="09" data-kind="video" data-fallback-video="img/video/libertango.mp4" data-video-poster>
+        <div class="media-photo" data-fallback="img/photos/media-06.jpg" style="background-image:url('img/photos/media-06.jpg')"></div>
         <div class="media-scrim"></div>
         <span class="tag">Видео — 09 <span class="status">· Libertango</span></span><div class="play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div><span class="lbl">Libertango</span>
         <label class="media-upload-btn" title="Загрузить своё видео"><input type="file" accept="video/*" class="media-input" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 16V4M12 4l-4 4M12 4l4 4"/><path d="M4 15v3a1 1 0 001 1h14a1 1 0 001-1v-3"/></svg></label>
@@ -2129,7 +2130,7 @@
     Array.prototype.slice.call(document.querySelectorAll('.media-tile')).forEach(function(tile){
       var slot = tile.getAttribute('data-slot');
       var kind = tile.getAttribute('data-kind');
-      var key = 'media-' + slot;
+      var key = 'media-' + slot + (slot === '07' && kind === 'photo' ? '-photo' : '');
       var photoEl = tile.querySelector('.media-photo');
       var statusEl = tile.querySelector('.status');
       var input = tile.querySelector('.media-input');
@@ -2152,12 +2153,16 @@
         videoUrl = fallbackVideoUrl || null;
         if (adjuster) adjuster.reset(fallbackUrl);
       }
-      function showVideoThumb(blob){
+      function showVideoThumb(source){
         var v = document.createElement('video');
-        v.src = URL.createObjectURL(blob);
-        v.muted = true; v.playsInline = true;
+        var objectUrl = source instanceof Blob ? URL.createObjectURL(source) : source;
+        v.src = objectUrl;
+        v.muted = true; v.playsInline = true; v.preload = 'metadata';
+        function releaseObjectUrl(){
+          if (source instanceof Blob) URL.revokeObjectURL(objectUrl);
+        }
         v.addEventListener('loadeddata', function(){
-          try { v.currentTime = Math.min(0.3, (v.duration || 1) / 2); } catch(e) { v.currentTime = 0; }
+          v.currentTime = Math.min(0.3, (v.duration || 1) / 2);
         });
         v.addEventListener('seeked', function(){
           var canvas = document.createElement('canvas');
@@ -2166,14 +2171,22 @@
           try {
             ctx.drawImage(v, 0, 0, canvas.width, canvas.height);
             photoEl.style.backgroundImage = "url('" + canvas.toDataURL('image/jpeg', 0.72) + "')";
-          } catch(e) { /* cross-origin canvas read can fail in some browsers; thumbnail just stays as-is */ }
-        });
+          } catch(e) { console.warn('Не удалось создать обложку из кадра видео.', e); }
+          releaseObjectUrl();
+        }, { once: true });
+        v.addEventListener('error', function(){
+          releaseObjectUrl();
+          console.error('Не удалось загрузить видео для создания обложки:', objectUrl);
+        }, { once: true });
       }
 
       // restore previously uploaded media for this tile (same browser only)
       if (adjuster) adjuster.load(fallbackUrl);
       mediaGet(key).then(function(blob){
-        if (!blob) return;
+        if (!blob) {
+          if (kind === 'video' && tile.hasAttribute('data-video-poster')) showVideoThumb(fallbackVideoUrl);
+          return;
+        }
         markCustom();
         if (kind === 'photo') {
           photoEl.style.backgroundImage = "url('" + URL.createObjectURL(blob) + "')";
@@ -2181,7 +2194,10 @@
           videoUrl = URL.createObjectURL(blob);
           showVideoThumb(blob);
         }
-      }).catch(function(){});
+      }).catch(function(error){
+        console.error('Не удалось восстановить файл из локального хранилища:', error);
+        if (kind === 'video' && tile.hasAttribute('data-video-poster')) showVideoThumb(fallbackVideoUrl);
+      });
 
       if (input) input.addEventListener('change', function(){
         var file = input.files && input.files[0];
