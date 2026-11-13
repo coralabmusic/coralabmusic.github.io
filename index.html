@@ -543,6 +543,12 @@
     .member-slides-col .slide{min-height:64vh;}
   }
   @media(max-width:900px){
+    header{transition:background-color .25s ease,backdrop-filter .25s ease,-webkit-backdrop-filter .25s ease;}
+    header.is-scrolled{
+      background:rgba(243,240,233,.72);
+      -webkit-backdrop-filter:blur(22px);
+      backdrop-filter:blur(22px);
+    }
     .wrap{padding-left:24px;padding-right:24px;}
     .split-wrap{display:block;}
     .slides-col{padding-left:24px;}
@@ -1590,6 +1596,14 @@
   var mobileMenu = document.getElementById('mobileMenu');
   burger.addEventListener('click', function(){ mobileMenu.classList.toggle('open'); });
   mobileMenu.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', function(){ mobileMenu.classList.remove('open'); }); });
+  var siteHeader = document.querySelector('header');
+  var mobileNavQuery = window.matchMedia('(max-width: 900px)');
+  function updateMobileNavTransparency(){
+    siteHeader.classList.toggle('is-scrolled', mobileNavQuery.matches && window.scrollY > 24);
+  }
+  window.addEventListener('scroll', updateMobileNavTransparency, { passive: true });
+  window.addEventListener('resize', updateMobileNavTransparency);
+  updateMobileNavTransparency();
 
   var revealEls = document.querySelectorAll('.reveal');
   var io = new IntersectionObserver(function(entries){
